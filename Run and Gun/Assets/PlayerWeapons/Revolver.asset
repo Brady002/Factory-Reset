@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59ae98d9ab1669f49ac4b5abfe123a71, type: 3}
+  m_Name: Revolver
+  m_EditorClassIdentifier: 
+  Type: 1
+  Name: Revolver
+  ModelPrefab: {fileID: 6555846007090808525, guid: b7c575bfaea43404dade4175f72eba10, type: 3}
+  SpawnPoint: {x: 1.5, y: -0.5, z: 2}
+  SpawnPoint2: {x: -1.5, y: -0.5, z: 2}
+  SpawnRotation: {x: 0, y: 180, z: 0}
+  HitscanOrigin: {x: 0, y: 0, z: 0}
+  ShootOrigin: {fileID: 6072720656299908525, guid: cd99ed4d81814ec4aba4a24bc9676210, type: 3}
+  UseConfig: {fileID: 11400000, guid: 2a32d86dd5c016a47854cb2f5148d7c7, type: 2}
+  TrailConfig: {fileID: 11400000, guid: 76a2b10d65bc3dc47aecf344650dd9f9, type: 2}
+  DamageConfig: {fileID: 11400000, guid: 1fc7d480eddc9b2418c9808e7bd162b3, type: 2}
