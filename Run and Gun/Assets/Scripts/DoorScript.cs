@@ -21,7 +21,6 @@ public class DoorScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Open sesame");
         if (other.GetComponent<CharacterController>())
         {
             if(!locked)

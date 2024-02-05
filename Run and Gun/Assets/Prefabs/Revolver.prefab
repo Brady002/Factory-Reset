@@ -5093,5 +5093,5 @@ MonoBehaviour:
   Spread: {x: 0, y: 0, z: 0}
   HitMask:
     serializedVersion: 2
-    m_Bits: 211
+    m_Bits: 4294967295
   TrailConfig: {fileID: 11400000, guid: 76a2b10d65bc3dc47aecf344650dd9f9, type: 2}

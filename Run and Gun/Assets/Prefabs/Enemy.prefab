@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3706075714507328624}
   - component: {fileID: 2796877905427823729}
-  - component: {fileID: 3963445981483740482}
   - component: {fileID: 6248462908825684795}
+  - component: {fileID: 6239421907101686861}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -60,21 +60,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3963445981483740482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1479276576487286622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00c9c696859aed74ba090b21f66441cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 25
-  currentHealth: 0
-  deathParticles: {fileID: 8838316759993570282}
 --- !u!54 &6248462908825684795
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -102,6 +87,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6239421907101686861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479276576487286622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 224c2515735871549aca413eaa1f7761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  maxHealth: 25
+  currentHealth: 0
+  aggroRange: 0
+  attackRange: 0
+  attackDelay: 0
+  agent: {fileID: 0}
+  deathParticles: {fileID: 8838316759993570282}
+  player: {fileID: 0}
+  rb: {fileID: 6248462908825684795}
 --- !u!1 &4185118324679928589
 GameObject:
   m_ObjectHideFlags: 0
@@ -5049,7 +5056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPart: 0
-  Controller: {fileID: 3963445981483740482}
+  Controller: {fileID: 6239421907101686861}
   headMultiplyer: 1.5
   bodyMultiplyer: 1
   armMultiplyer: 0.7
@@ -5174,7 +5181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPart: 1
-  Controller: {fileID: 3963445981483740482}
+  Controller: {fileID: 6239421907101686861}
   headMultiplyer: 1.5
   bodyMultiplyer: 1
   armMultiplyer: 0.7

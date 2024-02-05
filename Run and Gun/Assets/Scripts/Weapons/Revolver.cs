@@ -63,8 +63,9 @@ public class Revolver : BaseWeapon
         instance.transform.position = EndPoint;
         try
         {
-            if (Hit.collider.TryGetComponent<Damagable>(out Damagable damagable))
+            if (Hit.collider.GetComponent<Damagable>())
             {
+                Damagable damagable = Hit.collider.GetComponent<Damagable>();
                 Transform hitpoint = Hit.transform;
                 damagable.SetDamage(damage, hitpoint);
             }

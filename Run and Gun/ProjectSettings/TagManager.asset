@@ -14,9 +14,9 @@ TagManager:
   - UI
   - Wall
   - Shootable
-  - 
-  - 
-  - 
+  - NavMesh 1
+  - NavMesh 2
+  - NavMesh 3
   - 
   - 
   - 
