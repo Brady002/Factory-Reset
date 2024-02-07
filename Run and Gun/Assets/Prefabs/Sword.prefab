@@ -5845,6 +5845,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5076736431984967949}
+  - component: {fileID: 3731969213072497388}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -5870,3 +5871,24 @@ Transform:
   - {fileID: 3385199652987384630}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3731969213072497388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8127854096554447975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdc77ab239000024c86191cae3c0f9fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 50
+  range: 3
+  cooldown: 1
+  canDestroy: 0
+  origin: {fileID: 3385199652987384630}
+  rb: {fileID: 0}
+  HitMask:
+    serializedVersion: 2
+    m_Bits: 4294967295

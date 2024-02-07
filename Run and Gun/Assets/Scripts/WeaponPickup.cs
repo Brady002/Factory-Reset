@@ -8,6 +8,7 @@ public class WeaponPickup : MonoBehaviour
     public GameObject weaponPrefab;
     private GameObject GO;
     public UnityEvent onPickup;
+    [SerializeField] public bool infinite = false;
 
     // Start is called before the first frame update
     void Start()
@@ -33,9 +34,9 @@ public class WeaponPickup : MonoBehaviour
                 GO.transform.localRotation = Quaternion.Euler(0f, 180f, 0f);
                 GO.GetComponent<BaseWeapon>().origin = player.aim.transform;
                 player.equipLeft = GO;
-            }
-
-            if (Input.GetMouseButton(0) && player.equipRight == null)
+                onPickup.Invoke();
+                StartCoroutine(Replenish());
+            } else if (Input.GetMouseButton(0) && player.equipRight == null)
             {
                 GO.transform.parent = null;
                 GO.transform.parent = player.attachRight;
@@ -43,9 +44,26 @@ public class WeaponPickup : MonoBehaviour
                 GO.transform.localRotation = Quaternion.Euler(0f, 180f, 0f);
                 GO.GetComponent<BaseWeapon>().origin = player.aim.transform;
                 player.equipRight = GO;
+                onPickup.Invoke();
+                StartCoroutine(Replenish());
             }
 
-            onPickup.Invoke();
+            
+        }
+    }
+
+    private IEnumerator Replenish()
+    {
+        if(infinite)
+        {
+            yield return new WaitForSeconds(1f);
+            GO = Instantiate(weaponPrefab, this.transform);
+        }
+        else
+        {
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 }

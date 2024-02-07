@@ -11,13 +11,6 @@ public abstract class BaseWeapon : MonoBehaviour
     public float cooldown;
     public bool canDestroy;
     public Transform origin;
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.TryGetComponent<PlayerController>(out PlayerController player))
-        {
-            //Equip
-        }
-    }
 
     public void Use()
     {
@@ -25,5 +18,6 @@ public abstract class BaseWeapon : MonoBehaviour
     }
 
     public abstract void Fire(float damage, float range, float cooldown);
+
 
 }
