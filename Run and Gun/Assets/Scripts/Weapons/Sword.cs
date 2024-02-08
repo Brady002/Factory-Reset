@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine.UIElements;
 
 public class Sword : BaseWeapon
 {
@@ -12,7 +13,7 @@ public class Sword : BaseWeapon
     private float LastUse = 0;
     public LayerMask HitMask;
     private bool attacking = false;
-    private float attackTime = 0.3f;
+    public float attackTime = 0.3f;
 
     private void Start()
     {
@@ -29,20 +30,11 @@ public class Sword : BaseWeapon
         {
             LastUse = Time.time;
             attacking = true;
+            StartCoroutine(Attacking());
             Vector3 aimDirection = origin.forward;
             
 
             aimDirection.Normalize();
-            if(Physics.Raycast(origin.position, aimDirection, out RaycastHit hit, range, HitMask) && attacking)
-            {
-                if (hit.collider.GetComponent<Damagable>())
-                {
-                    Damagable damagable = hit.collider.GetComponent<Damagable>();
-                    Transform hitpoint = hit.transform;
-                    damagable.SetDamage(damage, hitpoint);
-                }
-            }
-
         }
     }
 
@@ -50,5 +42,26 @@ public class Sword : BaseWeapon
     {
         yield return new WaitForSeconds(attackTime);
         attacking = false;
+    }
+
+    private void Update()
+    {
+        if(attacking)
+        {
+            rb.velocity = rb.transform.forward * 30;
+            if (Physics.SphereCast(origin.position, range, origin.forward, out RaycastHit collision, range, HitMask) && attacking)
+            {
+                Collider[] enemies = Physics.OverlapSphere(collision.point, 2);
+                foreach (Collider c in enemies)
+                {
+                    if (c.gameObject.GetComponent<Damagable>())
+                    {
+                        Damagable damagable = c.GetComponent<Damagable>();
+                        Transform hitpoint = collision.transform;
+                        damagable.SetDamage(damage, hitpoint);
+                    }
+                }
+            }
+        }
     }
 }
