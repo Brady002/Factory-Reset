@@ -229,7 +229,7 @@ public class PlayerController : MonoBehaviour
             Invoke(nameof(EndDash), dashLength);
         }
 
-        /*if (OnSlope()) //Normalize the movement direction on a slope.
+        if (OnSlope()) //Normalize the movement direction on a slope.
         {
             rb.AddForce(GetSlopeMoveDirection() * moveSpeed * 3f, ForceMode.Force);
             if (rb.velocity.y > 0)
@@ -237,59 +237,15 @@ public class PlayerController : MonoBehaviour
                 rb.AddForce(Vector3.down * 5f, ForceMode.Force);
             }
 
-        }*/
+        }
 
-        //rb.useGravity = !OnSlope(); //Turns gravity off if player is on slope to avoid unintentional sliding
+        rb.useGravity = !OnSlope(); //Turns gravity off if player is on slope to avoid unintentional sliding
 
     }
 
-
-    private int maxBounces = 5;
-    private float skinWidth = 0.015f;
-    private Vector3 CollideandSlide(Vector3 vel, Vector3 pos, int depth, bool gravityPass, Vector3 velint)
+    private Vector3 GetSlopeMoveDirection()
     {
-        if(depth >= maxBounces)
-        {
-            return Vector3.zero;
-        }
-
-        float dist = vel.magnitude + skinWidth;
-        Bounds bounds;
-        bounds = c.bounds;
-        bounds.Expand(-2 * skinWidth);
-
-        RaycastHit hit;
-        if(Physics.SphereCast(pos, bounds.extents.x, vel.normalized, out hit, dist, Ground))
-        {
-            Vector3 snapToSurface = vel.normalized * (hit.distance - skinWidth);
-            Vector3 leftover = vel - snapToSurface;
-            float angle = Vector3.Angle(Vector3.up, hit.normal);
-
-            if(snapToSurface.magnitude <= skinWidth)
-            {
-                snapToSurface = Vector3.zero;
-            }
-
-            if(angle <= maxSlopeAngle)
-            {
-                if(gravityPass)
-                {
-                    return snapToSurface;
-                }
-                float mag = leftover.magnitude;
-                leftover = Vector3.ProjectOnPlane(leftover, hit.normal).normalized;
-                leftover *= mag;
-            } else
-            {
-                float scale = 1 - Vector3.Dot(new Vector3(hit.normal.x, 0, hit.normal.z).normalized, -new Vector3(velint.x, 0, velint.z).normalized);
-                leftover *= scale;
-            }
-
-
-            return snapToSurface + CollideandSlide(leftover, pos + snapToSurface, depth + 1, gravityPass, velint);
-        }
-        return vel;
-        
+        return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
     }
 
     private void ControlSpeed() //Keeps player speed capped
@@ -323,6 +279,16 @@ public class PlayerController : MonoBehaviour
         }*/
     }
 
+    private bool OnSlope() //Checks to see if player is on slope.
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
+        {
+            float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
+            return angle < maxSlopeAngle && angle != 0;
+        }
+
+        return false;
+    }
     private void Jump()
     {
 

@@ -55,7 +55,7 @@ MonoBehaviour:
   Spread: {x: 0.1, y: 0.1, z: 0.1}
   HitMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2043
   TrailConfig: {fileID: 11400000, guid: 81241bd8bf0d88742bc2ea2828d00d0c, type: 2}
 --- !u!1 &3017349505822320972
 GameObject:

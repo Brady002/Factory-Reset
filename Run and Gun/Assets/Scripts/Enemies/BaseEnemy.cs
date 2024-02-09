@@ -20,10 +20,10 @@ public abstract class BaseEnemy : MonoBehaviour
     public float maxHealth = 25f;
     public float currentHealth;
 
-    [SerializeField] private float aggroRange;
-    //[SerializeField] private float movementSpeed;
-    [SerializeField] private float attackRange;
-    [SerializeField] private float attackDelay;
+    [SerializeField] public float aggroRange;
+    [SerializeField] public float attackRange;
+    [SerializeField] public float attackDelay = 0.9f;
+    public bool attacking = false;
 
     public ParticleSystem deathParticles;
 

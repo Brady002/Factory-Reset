@@ -13,7 +13,6 @@ public class Damagable : MonoBehaviour
 
     public void SetDamage(float WeaponDamage, Transform hitPosition)
     {
-        Debug.Log(bodyPart);
         switch(bodyPart)
         {
             case colliderType.head:

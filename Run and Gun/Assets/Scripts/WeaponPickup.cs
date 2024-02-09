@@ -8,6 +8,7 @@ public class WeaponPickup : MonoBehaviour
     public GameObject weaponPrefab;
     private GameObject GO;
     public UnityEvent onPickup;
+    private bool canPickup = true;
     [SerializeField] public bool infinite = false;
 
     // Start is called before the first frame update
@@ -26,7 +27,7 @@ public class WeaponPickup : MonoBehaviour
     {
         if(other.TryGetComponent<CharacterController>(out CharacterController player))
         {
-            if (Input.GetMouseButton(1) && player.equipLeft == null)
+            if (Input.GetMouseButton(1) && player.equipLeft == null && canPickup)
             {
                 GO.transform.parent = null;
                 GO.transform.parent = player.attachLeft;
@@ -36,7 +37,7 @@ public class WeaponPickup : MonoBehaviour
                 player.equipLeft = GO;
                 onPickup.Invoke();
                 StartCoroutine(Replenish());
-            } else if (Input.GetMouseButton(0) && player.equipRight == null)
+            } else if (Input.GetMouseButton(0) && player.equipRight == null && canPickup)
             {
                 GO.transform.parent = null;
                 GO.transform.parent = player.attachRight;
@@ -45,6 +46,7 @@ public class WeaponPickup : MonoBehaviour
                 GO.GetComponent<BaseWeapon>().origin = player.aim.transform;
                 player.equipRight = GO;
                 onPickup.Invoke();
+                
                 StartCoroutine(Replenish());
             }
 
@@ -56,7 +58,9 @@ public class WeaponPickup : MonoBehaviour
     {
         if(infinite)
         {
+            canPickup = false;
             yield return new WaitForSeconds(1f);
+            canPickup = true;
             GO = Instantiate(weaponPrefab, this.transform);
         }
         else

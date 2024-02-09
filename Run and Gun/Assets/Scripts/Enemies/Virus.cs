@@ -6,8 +6,13 @@ using UnityEngine.AI;
 public class Virus : BaseEnemy
 {
     public NavMeshAgent agent;
-    public float rotatioSpeed;
+    public float rotationSpeed;
     public float movementSpeed;
+    public GameObject attackPoint;
+
+    //private bool attacking = false;
+
+
     public override void UpdateIdleState(float aggroRange, GameObject player)
     {
         Vector3 directionToTarget = player.transform.position - transform.position;
@@ -28,11 +33,8 @@ public class Virus : BaseEnemy
     public override void UpdateChaseState(float attackRange, GameObject player)
     {
         Vector3 targetPosition = player.transform.position;
-        //Quaternion targetRotation = Quaternion.LookRotation(targetPosition, Vector3.up);
-        //Quaternion desiredRotation = Quaternion.Euler(0f, targetRotation.eulerAngles.y, 0f);
-        //rb.rotation = Quaternion.Slerp(rb.rotation, desiredRotation, Time.deltaTime * rotatioSpeed);
-        //rb.velocity = transform.forward * movementSpeed;
-        agent.SetDestination(targetPosition);
+        Vector3 offset = (player.transform.position - transform.position).normalized * attackRange; //Prevents enemy from trying to clip into target. Recommended to set around attack range.
+        agent.SetDestination(targetPosition - offset);
         if((player.transform.position - transform.position).magnitude < attackRange)
         {
             currentState = EnemyState.Attack;
@@ -41,20 +43,26 @@ public class Virus : BaseEnemy
 
     public override void UpdateAttackState()
     {
-        // Implement logic for the Attack state
-        // Perform the attack action
-        // Check for hits using hitboxes
-
-        // Transition back to Chase state after attacking
+        if ((player.transform.position - transform.position).magnitude < attackRange)
+        {
+            if(!attacking)
+            {
+                StartCoroutine(Attack());
+            }
+            
+        } else
+        {
+            currentState = EnemyState.Chase;
+        }
     }
 
-    private void DealDamage(GameObject target, int damage)
+    private IEnumerator Attack()
     {
-        // Deal damage to the target (player or another enemy)
-        // You can add more sophisticated logic here based on your game design
-        // For simplicity, let's subtract damage directly from the target's health
-        //target.GetComponent<PlayerHealth>().TakeDamage(damage);
+        attacking = true;
+        attackPoint.SetActive(true);
+        yield return new WaitForSeconds(attackDelay);
+        attackPoint.SetActive(false);
+        attacking = false;
     }
-
     
 }
