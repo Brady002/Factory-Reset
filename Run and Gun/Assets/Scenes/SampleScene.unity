@@ -42238,7 +42238,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 3.6e-44, z: 1.453e-41, w: 7.992605e+30}
+  m_BoundingSphereOverride: {x: -7.523164e-37, y: 1.5046328e-36, z: 1.6155871e-27, w: 6.718368e-28}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -42650,6 +42650,10 @@ PrefabInstance:
       propertyPath: Ground.m_Bits
       value: 307
       objectReference: {fileID: 0}
+    - target: {fileID: 4741492179110129055, guid: 710cb8401d6976a4d8f3328fece0001a, type: 3}
+      propertyPath: throwablePrefab
+      value: 
+      objectReference: {fileID: 727182020949799283, guid: e219b0999c7d4034da9b11a9d8672751, type: 3}
     - target: {fileID: 4846894201340316361, guid: 710cb8401d6976a4d8f3328fece0001a, type: 3}
       propertyPath: m_Layer
       value: 3

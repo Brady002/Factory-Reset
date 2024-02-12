@@ -51,12 +51,14 @@ public class CharacterController : MonoBehaviour
     [SerializeField] public GameObject equipLeft;
     public Transform attachRight;
     public Transform attachLeft;
+    public GameObject throwablePrefab;
 
     [Header("Unity Setup")]
     public Rigidbody rb;
     public PlayerState state;
     public GameObject aim;
     public Collider c;
+    private bool clicked = true;
 
     public enum PlayerState
     {
@@ -281,12 +283,12 @@ public class CharacterController : MonoBehaviour
 
         //Fire
 
-        if (Input.GetMouseButton(0) && equipRight != null)
+        if (Input.GetMouseButton(0) && equipRight != null && !Input.GetKey(KeyCode.Q))
         {
             equipRight.GetComponent<BaseWeapon>().Use();
         }
 
-        if (Input.GetMouseButton(1) && equipLeft != null)
+        if (Input.GetMouseButton(1) && equipLeft != null && !Input.GetKey(KeyCode.Q))
         {
             equipLeft.GetComponent<BaseWeapon>().Use();
         }
@@ -295,13 +297,27 @@ public class CharacterController : MonoBehaviour
         
         if (Input.GetMouseButton(0) && equipRight != null && Input.GetKey(KeyCode.Q))
         {
-            Destroy(equipRight);
+            MakeProjectile(equipRight);
+            equipRight = null;
+
         }
 
         if (Input.GetMouseButton(1) && equipLeft != null && Input.GetKey(KeyCode.Q))
         {
-            Destroy(equipLeft);
+            MakeProjectile(equipLeft);
+            equipLeft = null;
         }
+    }
+
+    private void MakeProjectile(GameObject weapon)
+    {
+        weapon.transform.position = aim.transform.position;
+        weapon.transform.parent = null;
+        weapon.GetComponent<Rigidbody>().isKinematic = false;
+        weapon.GetComponent<Rigidbody>().useGravity = true;
+        weapon.AddComponent<SphereCollider>().isTrigger = true;
+        weapon.AddComponent<PhysicsProjectile>().Attributes(20f, 50f);
+        weapon.AddComponent<Hurtbox>().Attributes(30f, true);
     }
 
     public void TakeDamage(float _damage, float _gracePeriod)

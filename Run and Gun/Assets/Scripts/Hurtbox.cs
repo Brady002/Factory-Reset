@@ -13,11 +13,12 @@ public class Hurtbox : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Attributes(damage);
+        Attributes(damage, friendly);
     }
-    public void Attributes(float _damage)
+    public void Attributes(float _damage, bool _friendly)
     {
         damage = _damage;
+        friendly = _friendly;
     }
 
     private void OnTriggerEnter(Collider other)

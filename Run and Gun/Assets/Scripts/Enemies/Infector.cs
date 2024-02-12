@@ -130,7 +130,7 @@ public class Infector : BaseEnemy
         attacking = true;
         GameObject bulletGO = Instantiate(projectile, shootOrigin);
         bulletGO.transform.parent = null;
-        bulletGO.GetComponent<Hurtbox>().Attributes(attackDamage);
+        bulletGO.GetComponent<Hurtbox>().Attributes(attackDamage, false);
         bulletGO.GetComponent<Projectile>().Attributes(bulletSpeed, attackRange);
         yield return new WaitForSeconds(attackDelay);
         attacking = false;
