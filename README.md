@@ -12,12 +12,13 @@
   <li>Left Control to slide</li>
   <li>To equip a weapon, find one in the level. Approaching the weapon and clicking the mouse will equip it. You can equip up to two weapons at once. The keybind for firing will be the same mouse button you used to originally pick it up.</li>
   <li>Use the weapons you find to kill enemies around the map.</li>
+  <li>Press Q and clicking the mouse will throw away your currently equipped weapon, dealing damage to any any enemy it hits before being destroyed.</li>
 </ul>
 
 <h2>Weapons:</h2>
 <p>Each weapon provided in the game provides a unique experience when wielded, allowing for levels to be completed differently based on the weapons availible.</p>
 <ul>
-  <li><h3>Revolver:</h3> Single shot weapon with a slow fire-rate, no bullet spread, and high damage. (WIP) Shooting the terrain will cause bullets to richochet.</li>
+  <li><h3>Revolver:</h3> Single shot weapon with a middling fire-rate, no bullet spread, and high damage. (WIP) Shooting the terrain will cause bullets to richochet.</li>
   <li><h3>Shotgun:</h3> Fires a spread of ten pellets that individually low damage. Medium spread and slow fire-rate. Able to destroy certain bits of terrain. (WIP) Firing the shotgun while airbourne will propel the player backwards.</li>
-  <li><h3>(WIP) Sword:</h3> Melee weapon with fast recharge. Using propels the player horizontally, dealing high damage to any enemies the player comes across during this state.</li>
+  <li><h3>Sword:</h3> Melee weapon with fast recharge. Using propels the player horizontally, dealing high damage to any enemies the player comes across during this state.</li>
 </ul>
