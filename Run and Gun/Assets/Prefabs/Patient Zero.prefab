@@ -108,7 +108,7 @@ MonoBehaviour:
   currentHealth: 0
   aggroRange: 100
   attackRange: 40
-  attackDelay: 1
+  attackDelay: 2
   attacking: 0
   deathParticles: {fileID: 7559104230336112203}
   player: {fileID: 0}

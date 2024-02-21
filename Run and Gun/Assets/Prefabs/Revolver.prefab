@@ -5088,7 +5088,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 20
   range: 100
-  cooldown: 1
+  cooldown: 0.7
   canDestroy: 0
   origin: {fileID: 4813627815509808256}
   Spread: {x: 0, y: 0, z: 0}
