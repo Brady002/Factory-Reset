@@ -13,13 +13,13 @@ public class Sword : BaseWeapon
     private float LastUse = 0;
     public LayerMask HitMask;
     private bool attacking = false;
-    public float attackTime = 0.3f;
+    public float attackTime = 0.4f;
 
     private void Start()
     {
         
     }
-    public override void Fire(float damage, float range, float cooldown)
+    public override void Fire(float damage, float range, float cooldown, Animator _hand)
     {
         if(rb == null)
         {
@@ -28,6 +28,8 @@ public class Sword : BaseWeapon
 
         if (Time.time > cooldown + LastUse)
         {
+            _hand.SetFloat("ShootSpeed", 1 / (cooldown - 1));
+            _hand.SetTrigger("Fire");
             LastUse = Time.time;
             attacking = true;
             StartCoroutine(Attacking());

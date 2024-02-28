@@ -34,8 +34,14 @@ public class WeaponPickup : MonoBehaviour
                 GO.transform.localPosition = new Vector3(0f, 0f, 0f);
                 GO.transform.localRotation = Quaternion.Euler(0f, 180f, 0f);
                 GO.GetComponent<BaseWeapon>().origin = player.aim.transform;
+
                 player.equipLeft = GO;
+                player.leftHand.SetInteger("Weapon", GO.GetComponent<BaseWeapon>().type);
+                player.leftHand.SetTrigger("Equip");
+                StartCoroutine(player.AllowUseOfWeapon(1));
+
                 onPickup.Invoke();
+                
                 StartCoroutine(Replenish());
             } else if (Input.GetMouseButton(0) && player.equipRight == null && canPickup)
             {
@@ -44,9 +50,13 @@ public class WeaponPickup : MonoBehaviour
                 GO.transform.localPosition = new Vector3(0f, 0f, 0f);
                 GO.transform.localRotation = Quaternion.Euler(0f, 180f, 0f);
                 GO.GetComponent<BaseWeapon>().origin = player.aim.transform;
+
                 player.equipRight = GO;
+                player.rightHand.SetInteger("Weapon", GO.GetComponent<BaseWeapon>().type);
+                player.rightHand.SetBool("Equipped", true);
+                StartCoroutine(player.AllowUseOfWeapon(0));
+
                 onPickup.Invoke();
-                
                 StartCoroutine(Replenish());
             }
 

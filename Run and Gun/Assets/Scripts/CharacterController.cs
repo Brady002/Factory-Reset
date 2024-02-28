@@ -52,6 +52,11 @@ public class CharacterController : MonoBehaviour
     public Transform attachRight;
     public Transform attachLeft;
     public GameObject throwablePrefab;
+    [SerializeField] public bool canUseRight = false;
+    [SerializeField] public bool canUseLeft = false;
+    public Animator rightHand;
+    public Animator leftHand;
+    private BaseWeapon weaponAttributes;
 
     [Header("Unity Setup")]
     public Rigidbody rb;
@@ -283,14 +288,16 @@ public class CharacterController : MonoBehaviour
 
         //Fire
 
-        if (Input.GetMouseButton(0) && equipRight != null && !Input.GetKey(KeyCode.Q))
+        if (Input.GetMouseButton(0) && equipRight != null && !Input.GetKey(KeyCode.Q) && canUseRight)
         {
-            equipRight.GetComponent<BaseWeapon>().Use();
+            equipRight.GetComponent<BaseWeapon>().Use(rightHand);
+
+
         }
 
-        if (Input.GetMouseButton(1) && equipLeft != null && !Input.GetKey(KeyCode.Q))
+        if (Input.GetMouseButton(1) && equipLeft != null && !Input.GetKey(KeyCode.Q) && canUseLeft)
         {
-            equipLeft.GetComponent<BaseWeapon>().Use();
+            equipLeft.GetComponent<BaseWeapon>().Use(leftHand);
         }
 
         //Discard
@@ -299,13 +306,16 @@ public class CharacterController : MonoBehaviour
         {
             MakeProjectile(equipRight);
             equipRight = null;
-
+            rightHand.SetBool("Equipped", false);
+            canUseRight = false;
         }
 
         if (Input.GetMouseButton(1) && equipLeft != null && Input.GetKey(KeyCode.Q))
         {
             MakeProjectile(equipLeft);
             equipLeft = null;
+            leftHand.SetBool("Equipped", false);
+            canUseLeft = false;
         }
     }
 
@@ -341,6 +351,20 @@ public class CharacterController : MonoBehaviour
     {
         yield return new WaitForSeconds(grace);
         canTakeDamage = true;
+    }
+
+    public IEnumerator AllowUseOfWeapon(int whichHand)
+    {
+        yield return new WaitForSeconds(.3f);
+        switch(whichHand)
+        {
+            case 0:
+                canUseRight = true;
+                break;
+            case 1: 
+                canUseLeft = false; 
+                break;
+        }
     }
 
 }

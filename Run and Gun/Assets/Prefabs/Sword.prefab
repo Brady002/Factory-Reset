@@ -5889,6 +5889,7 @@ MonoBehaviour:
   cooldown: 2
   canDestroy: 0
   origin: {fileID: 3385199652987384630}
+  type: 3
   rb: {fileID: 0}
   HitMask:
     serializedVersion: 2

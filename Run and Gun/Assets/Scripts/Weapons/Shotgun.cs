@@ -19,10 +19,12 @@ public class Shotgun : BaseWeapon
     {
         TrailPool = new ObjectPool<TrailRenderer>(CreateTrail);
     }
-    public override void Fire(float damage, float range, float cooldown)
+    public override void Fire(float damage, float range, float cooldown, Animator _hand)
     {
         if (Time.time > cooldown + LastUse)
         {
+            _hand.SetFloat("ShootSpeed", 1/cooldown);
+            _hand.SetTrigger("Fire");
             LastUse = Time.time;
             for (int i = 0; i < pelletCount; i++)
             {

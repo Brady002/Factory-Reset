@@ -5091,6 +5091,7 @@ MonoBehaviour:
   cooldown: 0.7
   canDestroy: 0
   origin: {fileID: 4813627815509808256}
+  type: 1
   Spread: {x: 0, y: 0, z: 0}
   HitMask:
     serializedVersion: 2

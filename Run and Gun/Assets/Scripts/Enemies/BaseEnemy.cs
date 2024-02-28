@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.PackageManager.UI;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Rendering;
 
 public abstract class BaseEnemy : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public abstract class BaseEnemy : MonoBehaviour
 
     public float maxHealth = 25f;
     public float currentHealth;
+    private bool enableAI = false;
 
     [SerializeField] public float aggroRange;
     [SerializeField] public float attackRange;
@@ -28,12 +30,13 @@ public abstract class BaseEnemy : MonoBehaviour
     public ParticleSystem deathParticles;
 
     public GameObject player;
-
     public Rigidbody rb;
+
+    public Renderer mesh;
     private void OnEnable()
     {
         currentHealth = maxHealth;
-        
+        StartCoroutine(Materialize());
     }
 
     private void Start()
@@ -46,24 +49,27 @@ public abstract class BaseEnemy : MonoBehaviour
 
     private void Update()
     {
-        switch (currentState)
+        if(enableAI)
         {
-            case EnemyState.Idle:
-                UpdateIdleState(aggroRange, player);
-                break;
-            case EnemyState.Patrol:
-                UpdatePatrolState();
-                break;
-            case EnemyState.Chase:
-                UpdateChaseState(attackRange, player);
-                break;
-            case EnemyState.Attack:
-                UpdateAttackState();
-                break;
-            case EnemyState.Dead:
-                // Handle dead state
-                break;
+            switch (currentState)
+            {
+                case EnemyState.Idle:
+                    UpdateIdleState(aggroRange, player);
+                    break;
+                case EnemyState.Patrol:
+                    UpdatePatrolState();
+                    break;
+                case EnemyState.Chase:
+                    UpdateChaseState(attackRange, player);
+                    break;
+                case EnemyState.Attack:
+                    UpdateAttackState();
+                    break;
+                case EnemyState.Dead:
+                    break;
+            }
         }
+        
     }
 
     public abstract void UpdateIdleState(float aggroRange, GameObject player);
@@ -99,22 +105,53 @@ public abstract class BaseEnemy : MonoBehaviour
 
     private IEnumerator Die(Transform hitPosition)
     {
-        // Implement logic for when the enemy dies
         currentState = EnemyState.Dead;
         rb.freezeRotation = false;
+        Destroy(gameObject.GetComponent<NavMeshAgent>());
+
         // Additional actions such as playing death animation, dropping loot, etc.
         //rb.AddForce(Vector3.up * 10f, ForceMode.Impulse);
         rb.AddTorque(-hitPosition.position, ForceMode.Impulse);
         rb.AddForceAtPosition(-rb.transform.forward, hitPosition.position, ForceMode.Impulse);
         deathParticles.Play();
         yield return new WaitForSeconds(1f);
-        Destroy(this.gameObject);
-        
+        StartCoroutine(Dematerialize());    
     }
 
     public void SetState(EnemyState newState)
     {
         currentState = newState;
+    }
+
+    private IEnumerator Materialize()
+    {
+        float max = -2f;
+        float elapsedTime = 2f;
+        float speed = 5;
+        while(elapsedTime > max) 
+        { 
+            elapsedTime -= Time.deltaTime * speed;
+
+            mesh.material.SetFloat("_Cutoff", elapsedTime);
+            yield return null;
+        }
+        enableAI = true;
+    }
+
+    private IEnumerator Dematerialize()
+    {
+        float max = 2f;
+        float elapsedPos = -2f;
+        float speed = 5;
+        while (elapsedPos < max)
+        {
+            elapsedPos += Time.deltaTime * speed;
+
+            mesh.material.SetFloat("_Cutoff", elapsedPos);
+            yield return null;
+        }
+        Destroy(this.gameObject.GetComponentInChildren<Renderer>().material);
+        Destroy(this.gameObject);
     }
 }
 
