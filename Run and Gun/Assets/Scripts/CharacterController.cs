@@ -302,7 +302,7 @@ public class CharacterController : MonoBehaviour
 
         //Discard
         
-        if (Input.GetMouseButton(0) && equipRight != null && Input.GetKey(KeyCode.Q))
+        if (Input.GetMouseButton(0) && equipRight != null && Input.GetKey(KeyCode.Q) && canUseRight)
         {
             MakeProjectile(equipRight);
             equipRight = null;
@@ -310,7 +310,7 @@ public class CharacterController : MonoBehaviour
             canUseRight = false;
         }
 
-        if (Input.GetMouseButton(1) && equipLeft != null && Input.GetKey(KeyCode.Q))
+        if (Input.GetMouseButton(1) && equipLeft != null && Input.GetKey(KeyCode.Q) && canUseLeft)
         {
             MakeProjectile(equipLeft);
             equipLeft = null;
@@ -362,7 +362,7 @@ public class CharacterController : MonoBehaviour
                 canUseRight = true;
                 break;
             case 1: 
-                canUseLeft = false; 
+                canUseLeft = true; 
                 break;
         }
     }

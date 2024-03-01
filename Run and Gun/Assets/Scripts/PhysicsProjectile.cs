@@ -9,6 +9,7 @@ public class PhysicsProjectile : MonoBehaviour
     private Vector3 startPos;
     private Rigidbody rb;
     private GameObject objectBounds;
+    private bool destructable = true;
 
     private void Start()
     {
@@ -28,17 +29,22 @@ public class PhysicsProjectile : MonoBehaviour
         gameObject.GetComponent<Rigidbody>().AddForce(-transform.forward * speed, ForceMode.Impulse);
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        Destroy(this.gameObject);
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        if(Vector3.Distance(transform.position, startPos) >= 4f)
+        if (Vector3.Distance(transform.position, startPos) >= 4f)
         {
             Destroy(this.gameObject);
-
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(destructable)
+        {
+            Destroy(this.gameObject);
+        }
+        
+    }
+
+    
 }

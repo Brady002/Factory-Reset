@@ -37,7 +37,7 @@ public class WeaponPickup : MonoBehaviour
 
                 player.equipLeft = GO;
                 player.leftHand.SetInteger("Weapon", GO.GetComponent<BaseWeapon>().type);
-                player.leftHand.SetTrigger("Equip");
+                player.leftHand.SetBool("Equipped", true);
                 StartCoroutine(player.AllowUseOfWeapon(1));
 
                 onPickup.Invoke();
@@ -76,6 +76,7 @@ public class WeaponPickup : MonoBehaviour
         else
         {
             {
+                yield return new WaitForSeconds(1f); //This needs to be set greater or equal to the AllowUseWeapon time in the player script;
                 Destroy(this.gameObject);
             }
         }

@@ -97,8 +97,8 @@ MonoBehaviour:
   jumpKey: 32
   dashKey: 0
   crouchKey: 306
-  moveSpeed: 3
-  maxSpeed: 10
+  moveSpeed: 5
+  maxSpeed: 12
   orientation: {fileID: 3003057381647403163}
   playerHeight: 2
   Ground:
@@ -120,6 +120,8 @@ MonoBehaviour:
   attachRight: {fileID: 5976853601682294651}
   attachLeft: {fileID: 5393940000347765669}
   throwablePrefab: {fileID: 727182020949799283, guid: e219b0999c7d4034da9b11a9d8672751, type: 3}
+  canUseRight: 0
+  canUseLeft: 0
   rightHand: {fileID: 1588514408797720899}
   leftHand: {fileID: 6397402619588077540}
   rb: {fileID: 4148141968353839349}
@@ -518,9 +520,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6771003285010578688}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c93a793ba84b9a246ac03f75ad468942, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0e6b62c7acdb6364caf4247ab5b07095, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
