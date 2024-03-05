@@ -7,16 +7,20 @@ public class PillarControlScript : MonoBehaviour
 {
 
     public Animator animator;
+    public float offset = 1;
     [SerializeField] private int anim;
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
+        
         ChangeAnimation(anim);
+        animator.SetFloat("Offset", 1/offset);
     }
 
     public void ChangeAnimation(int _state)
     {
+        //yield return new WaitForSeconds(offset);
         switch (_state)
         {
             case 0:
