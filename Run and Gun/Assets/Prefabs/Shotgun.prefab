@@ -53,7 +53,7 @@ MonoBehaviour:
   canDestroy: 1
   origin: {fileID: 1496327712212294742}
   type: 2
-  pelletCount: 10
+  pelletCount: 20
   Spread: {x: 0.1, y: 0.1, z: 0.1}
   HitMask:
     serializedVersion: 2

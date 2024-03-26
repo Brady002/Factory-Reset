@@ -106,7 +106,7 @@ MonoBehaviour:
     m_Bits: 307
   groundDrag: 5
   grounded: 0
-  jumpForce: 15
+  jumpForce: 16
   jumpCooldown: 0.2
   airMultiplier: 0.3
   maxHealth: 3
