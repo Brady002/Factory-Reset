@@ -9,8 +9,10 @@ public class Shotgun : BaseWeapon
 
     [SerializeField] private int pelletCount;
     public Vector3 Spread;
+    public float launchForce = 20f;
     private float LastUse = 0;
     public LayerMask HitMask;
+    private CharacterController pc;
 
     public TrailConfigScriptableObject TrailConfig;
     private ObjectPool<TrailRenderer> TrailPool;
@@ -21,6 +23,11 @@ public class Shotgun : BaseWeapon
     }
     public override void Fire(float damage, float range, float cooldown, Animator _hand)
     {
+
+        if (pc == null)
+        {
+            pc = this.transform.parent.parent.parent.GetComponent<CharacterController>();
+        }
         if (Time.time > cooldown + LastUse)
         {
             _hand.SetFloat("ShootSpeed", 1/cooldown);
@@ -44,9 +51,16 @@ public class Shotgun : BaseWeapon
                     StartCoroutine(PlayTrail(transform.position, transform.position + (aimDirection * range), new RaycastHit()));
                 }
             }
-            
-            
+
+            if (!pc.grounded)
+            {
+                pc.rb.AddForce(-origin.forward * launchForce, ForceMode.Impulse);
+            }
+
+
         }
+
+        
 
     }
 
