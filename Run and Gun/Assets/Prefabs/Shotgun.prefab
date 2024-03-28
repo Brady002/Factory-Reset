@@ -55,7 +55,7 @@ MonoBehaviour:
   type: 2
   pelletCount: 20
   Spread: {x: 0.1, y: 0.1, z: 0.1}
-  launchForce: 20
+  launchForce: 25
   HitMask:
     serializedVersion: 2
     m_Bits: 2043

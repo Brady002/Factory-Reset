@@ -28,7 +28,7 @@ public class Hurtbox : MonoBehaviour
             if (other.GetComponent<Damagable>())
             {
                 Damagable target = other.GetComponent<Damagable>();
-                target.SetDamage(damage, other.transform);
+                target.SetDamage(damage, other.transform.position);
             }
         }
         else

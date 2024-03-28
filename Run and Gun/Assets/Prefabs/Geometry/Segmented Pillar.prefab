@@ -2590,7 +2590,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 5800378281435880015}
-  state: 0
+  offset: 0
+  anim: 0
 --- !u!1 &2653357884808888355
 GameObject:
   m_ObjectHideFlags: 0

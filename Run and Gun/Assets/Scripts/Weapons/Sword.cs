@@ -59,7 +59,7 @@ public class Sword : BaseWeapon
                     if (c.gameObject.GetComponent<Damagable>())
                     {
                         Damagable damagable = c.GetComponent<Damagable>();
-                        Transform hitpoint = collision.transform;
+                        Vector3 hitpoint = collision.point;
                         damagable.SetDamage(damage, hitpoint);
                     }
                 }

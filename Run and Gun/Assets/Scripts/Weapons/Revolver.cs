@@ -69,7 +69,7 @@ public class Revolver : BaseWeapon
             if (Hit.collider.GetComponent<Damagable>())
             {
                 Damagable damagable = Hit.collider.GetComponent<Damagable>();
-                Transform hitpoint = Hit.transform;
+                Vector3 hitpoint = Hit.point;
                 damagable.SetDamage(damage, hitpoint);
             }
             else if (Hit.collider.TryGetComponent<DestructableTerrainObject>(out DestructableTerrainObject terrain))

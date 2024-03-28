@@ -109,7 +109,6 @@ MonoBehaviour:
   attackRange: 2
   attackDelay: 0.9
   attacking: 0
-  deathParticles: {fileID: 9042935193865065416}
   player: {fileID: 0}
   rb: {fileID: 4092194148756676749}
   mesh: {fileID: 8176359946099729307}
@@ -151,7 +150,6 @@ GameObject:
   - component: {fileID: 8820590701913344292}
   - component: {fileID: 8176359946099729307}
   - component: {fileID: 5593059388877424863}
-  - component: {fileID: 3627830651915846762}
   - component: {fileID: 3877446569804588375}
   m_Layer: 7
   m_Name: Model
@@ -242,29 +240,12 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3627830651915846762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5446474208473062854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1b3344e69e46c64ca1849d3b0ac3b76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bodyPart: 1
-  Controller: {fileID: 1513393272581961309}
-  headMultiplyer: 1.5
-  bodyMultiplyer: 1
-  armMultiplyer: 0.7
 --- !u!114 &3877446569804588375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26299,6 +26280,7 @@ MonoBehaviour:
   headMultiplyer: 1.5
   bodyMultiplyer: 1
   armMultiplyer: 0.7
+  particles: {fileID: 9178375030027738852, guid: aa676591033f3f3449aef88115351e07, type: 3}
 --- !u!1 &5981149963948621227
 GameObject:
   m_ObjectHideFlags: 0
@@ -26422,6 +26404,7 @@ MonoBehaviour:
   headMultiplyer: 1.5
   bodyMultiplyer: 1
   armMultiplyer: 0.7
+  particles: {fileID: 9178375030027738852, guid: e0108afdbb880ca4c84eea1d513f4316, type: 3}
 --- !u!1 &7406037571553178553
 GameObject:
   m_ObjectHideFlags: 0

@@ -107,7 +107,6 @@ MonoBehaviour:
   attackRange: 0
   attackDelay: 0
   attacking: 0
-  deathParticles: {fileID: 8838316759993570282}
   player: {fileID: 0}
   rb: {fileID: 6248462908825684795}
   mesh: {fileID: 2007163944944359599}
@@ -5062,6 +5061,7 @@ MonoBehaviour:
   headMultiplyer: 1.5
   bodyMultiplyer: 1
   armMultiplyer: 0.7
+  particles: {fileID: 9178375030027738852, guid: e0108afdbb880ca4c84eea1d513f4316, type: 3}
 --- !u!1 &7698158977996367380
 GameObject:
   m_ObjectHideFlags: 0
@@ -5076,7 +5076,7 @@ GameObject:
   - component: {fileID: 3887952475785063258}
   - component: {fileID: 2455706908911223377}
   m_Layer: 7
-  m_Name: Head (1)
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5164,6 +5164,7 @@ MonoBehaviour:
   headMultiplyer: 1.5
   bodyMultiplyer: 1
   armMultiplyer: 0.7
+  particles: {fileID: 9178375030027738852, guid: aa676591033f3f3449aef88115351e07, type: 3}
 --- !u!136 &2455706908911223377
 CapsuleCollider:
   m_ObjectHideFlags: 0

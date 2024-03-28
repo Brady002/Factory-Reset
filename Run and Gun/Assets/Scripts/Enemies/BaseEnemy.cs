@@ -26,7 +26,7 @@ public abstract class BaseEnemy : MonoBehaviour
     [SerializeField] public float attackDelay = 0.9f;
     public bool attacking = false;
 
-    public ParticleSystem deathParticles;
+    //public ParticleSystem deathParticles;
 
     public GameObject player;
     public Rigidbody rb;
@@ -85,7 +85,7 @@ public abstract class BaseEnemy : MonoBehaviour
 
     public abstract void UpdateAttackState();
 
-    public void TakeDamage(float Damage, Transform hitPosition)
+    public void TakeDamage(float Damage, Vector3 hitPosition)
     {
         float damageTaken = Mathf.Clamp(Damage, 0, currentHealth);
         currentHealth -= damageTaken;
@@ -102,7 +102,7 @@ public abstract class BaseEnemy : MonoBehaviour
         }
     }
 
-    private IEnumerator Die(Transform hitPosition)
+    private IEnumerator Die(Vector3 hitPosition)
     {
         currentState = EnemyState.Dead;
         rb.freezeRotation = false;
@@ -110,9 +110,9 @@ public abstract class BaseEnemy : MonoBehaviour
 
         // Additional actions such as playing death animation, dropping loot, etc.
         //rb.AddForce(Vector3.up * 10f, ForceMode.Impulse);
-        rb.AddTorque(-hitPosition.position, ForceMode.Impulse);
-        rb.AddForceAtPosition(-rb.transform.forward, hitPosition.position, ForceMode.Impulse);
-        deathParticles.Play();
+        rb.AddTorque(-hitPosition, ForceMode.Impulse);
+        rb.AddForceAtPosition(-rb.transform.forward, hitPosition, ForceMode.Impulse);
+        //deathParticles.Play();
         yield return new WaitForSeconds(1f);
         StartCoroutine(Dematerialize());    
     }

@@ -111,7 +111,6 @@ MonoBehaviour:
   attackRange: 40
   attackDelay: 2
   attacking: 0
-  deathParticles: {fileID: 7559104230336112203}
   player: {fileID: 0}
   rb: {fileID: 6396313307617869569}
   mesh: {fileID: 2402559940946290497}
@@ -17498,6 +17497,7 @@ MonoBehaviour:
   headMultiplyer: 1.5
   bodyMultiplyer: 1
   armMultiplyer: 0.5
+  particles: {fileID: 9178375030027738852, guid: 9cba8ebb5fe70994296eaee5a4747498, type: 3}
 --- !u!1 &5272174108377725301
 GameObject:
   m_ObjectHideFlags: 0
@@ -17621,6 +17621,7 @@ MonoBehaviour:
   headMultiplyer: 1.5
   bodyMultiplyer: 1
   armMultiplyer: 0.5
+  particles: {fileID: 9178375030027738852, guid: 9cba8ebb5fe70994296eaee5a4747498, type: 3}
 --- !u!1 &6996992851835423592
 GameObject:
   m_ObjectHideFlags: 0
@@ -17744,6 +17745,7 @@ MonoBehaviour:
   headMultiplyer: 1.5
   bodyMultiplyer: 1
   armMultiplyer: 0.5
+  particles: {fileID: 9178375030027738852, guid: 9cba8ebb5fe70994296eaee5a4747498, type: 3}
 --- !u!1 &7216909080047606393
 GameObject:
   m_ObjectHideFlags: 0
@@ -17869,6 +17871,7 @@ MonoBehaviour:
   headMultiplyer: 1.5
   bodyMultiplyer: 1
   armMultiplyer: 0.7
+  particles: {fileID: 9178375030027738852, guid: e0108afdbb880ca4c84eea1d513f4316, type: 3}
 --- !u!96 &3044817366551422714
 TrailRenderer:
   serializedVersion: 3
@@ -18096,3 +18099,4 @@ MonoBehaviour:
   headMultiplyer: 1.5
   bodyMultiplyer: 1
   armMultiplyer: 0.5
+  particles: {fileID: 9178375030027738852, guid: 9cba8ebb5fe70994296eaee5a4747498, type: 3}
