@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.ProBuilder;
@@ -9,26 +10,32 @@ public class Hurtbox : MonoBehaviour
 
     [SerializeField] private bool friendly = false;
     [SerializeField] private float damageGracePeriod = 1f;
-    [SerializeField] private float damage = 1f;
+    [SerializeField] private int damage = 1;
     // Start is called before the first frame update
     void Start()
     {
         Attributes(damage, friendly);
     }
-    public void Attributes(float _damage, bool _friendly)
+    public void Attributes(int _damage, bool _friendly)
     {
         damage = _damage;
         friendly = _friendly;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (friendly)
         {
-            if (other.GetComponent<Damagable>())
+            if (other.GetComponent<BaseEnemy>())
             {
-                Damagable target = other.GetComponent<Damagable>();
-                target.SetDamage(damage, other.transform.position);
+                BaseEnemy target = other.GetComponent<BaseEnemy>();
+                if(!target.damageSources.Contains(this.GetComponent<Collider>()))
+                {
+                    target.damageSources.Add(this.GetComponent<Collider>());
+                    target.TakeDamage(damage, other.transform.position);
+                    
+                }
+                
             }
         }
         else

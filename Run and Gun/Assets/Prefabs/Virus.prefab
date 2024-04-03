@@ -105,6 +105,7 @@ MonoBehaviour:
   currentState: 0
   maxHealth: 15
   currentHealth: 0
+  damageSources: []
   aggroRange: 50
   attackRange: 2
   attackDelay: 0.9
@@ -125,7 +126,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1607513874434602816}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.75
   m_Speed: 7
   m_Acceleration: 8
   avoidancePriority: 50
@@ -26280,6 +26281,7 @@ MonoBehaviour:
   headMultiplyer: 1.5
   bodyMultiplyer: 1
   armMultiplyer: 0.7
+  limbPointValue: 0
   particles: {fileID: 9178375030027738852, guid: aa676591033f3f3449aef88115351e07, type: 3}
 --- !u!1 &5981149963948621227
 GameObject:
@@ -26404,6 +26406,7 @@ MonoBehaviour:
   headMultiplyer: 1.5
   bodyMultiplyer: 1
   armMultiplyer: 0.7
+  limbPointValue: 0
   particles: {fileID: 9178375030027738852, guid: e0108afdbb880ca4c84eea1d513f4316, type: 3}
 --- !u!1 &7406037571553178553
 GameObject:
@@ -31301,4 +31304,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   friendly: 0
   damageGracePeriod: 1
-  damage: 1
+  damage: 100

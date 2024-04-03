@@ -19,6 +19,8 @@ public abstract class BaseEnemy : MonoBehaviour
 
     public float maxHealth = 25f;
     public float currentHealth;
+    public List<Collider> damageSources;
+
     private bool enableAI = false;
 
     [SerializeField] public float aggroRange;
@@ -27,6 +29,7 @@ public abstract class BaseEnemy : MonoBehaviour
     public bool attacking = false;
 
     //public ParticleSystem deathParticles;
+    public int deathPointValue = 50;
 
     public GameObject player;
     public Rigidbody rb;
@@ -72,12 +75,6 @@ public abstract class BaseEnemy : MonoBehaviour
     }
 
     public abstract void UpdateIdleState(float aggroRange, GameObject player);
-    /*{
-        Vector3 directionToTarget = player.transform.position - transform.position;
-        Quaternion targetRotation = Quaternion.LookRotation(directionToTarget, Vector3.up);
-
-        rb.rotation = Quaternion.Euler(0f, targetRotation.eulerAngles.y, 0f);
-    }*/
 
     public abstract void UpdatePatrolState();
 
@@ -88,12 +85,12 @@ public abstract class BaseEnemy : MonoBehaviour
     public void TakeDamage(float Damage, Vector3 hitPosition)
     {
         float damageTaken = Mathf.Clamp(Damage, 0, currentHealth);
-        currentHealth -= damageTaken;
-        if (damageTaken != 0)
+        Debug.Log(damageSources.Count);
+        if(damageSources.Count != 0)
         {
-
+            StartCoroutine(ClearDamageArray());
         }
-
+        currentHealth -= damageTaken;
 
         if (currentHealth == 0 && damageTaken != 0)
         {
@@ -102,17 +99,23 @@ public abstract class BaseEnemy : MonoBehaviour
         }
     }
 
+    private IEnumerator ClearDamageArray()
+    {
+        yield return new WaitForSeconds(.5f);
+        Debug.Log("Removed Damage Source");
+        damageSources.RemoveAt(0);
+    }
+
     private IEnumerator Die(Vector3 hitPosition)
     {
         currentState = EnemyState.Dead;
+        FindObjectOfType<PointSystem>().AddPoints(deathPointValue);
+
         rb.freezeRotation = false;
         Destroy(gameObject.GetComponent<NavMeshAgent>());
 
-        // Additional actions such as playing death animation, dropping loot, etc.
-        //rb.AddForce(Vector3.up * 10f, ForceMode.Impulse);
         rb.AddTorque(-hitPosition, ForceMode.Impulse);
         rb.AddForceAtPosition(-rb.transform.forward, hitPosition, ForceMode.Impulse);
-        //deathParticles.Play();
         yield return new WaitForSeconds(1f);
         StartCoroutine(Dematerialize());    
     }

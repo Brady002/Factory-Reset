@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Pixelizer
   m_Shader: {fileID: -6465566751694194690, guid: 5d7127a5ae293a74b94701543b0fa8bc, type: 3}
-  m_Parent: {fileID: 2100000, guid: 408d11ba86560cd4280e47cd6cf10d55, type: 2}
+  m_Parent: {fileID: 2100000, guid: f6f8df26f572597489cb1ae26eade12c, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _ALPHATEST_ON

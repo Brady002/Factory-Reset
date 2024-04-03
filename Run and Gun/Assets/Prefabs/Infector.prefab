@@ -107,10 +107,12 @@ MonoBehaviour:
   currentState: 0
   maxHealth: 30
   currentHealth: 0
+  damageSources: []
   aggroRange: 100
   attackRange: 40
   attackDelay: 2
-  attacking: 0
+  attacking: 1
+  deathPointValue: 100
   player: {fileID: 0}
   rb: {fileID: 6396313307617869569}
   mesh: {fileID: 2402559940946290497}
@@ -122,7 +124,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2043
   buffer: 5
-  attackDamage: 1
+  attackDamage: 50
   bulletSpeed: 25
 --- !u!195 &5048415508860508690
 NavMeshAgent:
@@ -17497,6 +17499,7 @@ MonoBehaviour:
   headMultiplyer: 1.5
   bodyMultiplyer: 1
   armMultiplyer: 0.5
+  limbPointValue: 0
   particles: {fileID: 9178375030027738852, guid: 9cba8ebb5fe70994296eaee5a4747498, type: 3}
 --- !u!1 &5272174108377725301
 GameObject:
@@ -17621,6 +17624,7 @@ MonoBehaviour:
   headMultiplyer: 1.5
   bodyMultiplyer: 1
   armMultiplyer: 0.5
+  limbPointValue: 0
   particles: {fileID: 9178375030027738852, guid: 9cba8ebb5fe70994296eaee5a4747498, type: 3}
 --- !u!1 &6996992851835423592
 GameObject:
@@ -17745,6 +17749,7 @@ MonoBehaviour:
   headMultiplyer: 1.5
   bodyMultiplyer: 1
   armMultiplyer: 0.5
+  limbPointValue: 0
   particles: {fileID: 9178375030027738852, guid: 9cba8ebb5fe70994296eaee5a4747498, type: 3}
 --- !u!1 &7216909080047606393
 GameObject:
@@ -17871,6 +17876,7 @@ MonoBehaviour:
   headMultiplyer: 1.5
   bodyMultiplyer: 1
   armMultiplyer: 0.7
+  limbPointValue: 0
   particles: {fileID: 9178375030027738852, guid: e0108afdbb880ca4c84eea1d513f4316, type: 3}
 --- !u!96 &3044817366551422714
 TrailRenderer:
@@ -18099,4 +18105,5 @@ MonoBehaviour:
   headMultiplyer: 1.5
   bodyMultiplyer: 1
   armMultiplyer: 0.5
+  limbPointValue: 0
   particles: {fileID: 9178375030027738852, guid: 9cba8ebb5fe70994296eaee5a4747498, type: 3}

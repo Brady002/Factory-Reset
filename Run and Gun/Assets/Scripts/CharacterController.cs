@@ -327,23 +327,15 @@ public class CharacterController : MonoBehaviour
         weapon.GetComponent<Rigidbody>().useGravity = true;
         weapon.AddComponent<SphereCollider>().isTrigger = true;
         weapon.AddComponent<PhysicsProjectile>().Attributes(20f, 50f);
-        weapon.AddComponent<Hurtbox>().Attributes(30f, true);
+        weapon.AddComponent<Hurtbox>().Attributes(30, true);
     }
 
-    public void TakeDamage(float _damage, float _gracePeriod)
+    public void TakeDamage(int _damage, float _gracePeriod)
     {
-        float damageTaken = Mathf.Clamp(_damage, 0, currentHealth);
         if(canTakeDamage) {
             canTakeDamage = false;
-            currentHealth -= damageTaken;
-            Debug.Log(currentHealth);
+            FindAnyObjectByType<PointSystem>().SubtractPoints(_damage);
             StartCoroutine(ResetDamagePeriod(_gracePeriod));
-        }
-        
-
-        if (currentHealth <= 0 && damageTaken != 0)
-        {
-            Debug.Log("Dead");
         }
     }
 

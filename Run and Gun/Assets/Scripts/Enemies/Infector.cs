@@ -19,7 +19,7 @@ public class Infector : BaseEnemy
     public float buffer = 10f;
 
     [Header("Bullet Settings")]
-    [SerializeField] private float attackDamage;
+    [SerializeField] private int attackDamage;
     [SerializeField] private float bulletSpeed;
 
     private void LateUpdate()

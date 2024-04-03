@@ -60,7 +60,7 @@ Material:
     - _Cutoff: -1
     - _DstBlend: 0
     - _Glow_Thickness: 0.05
-    - _Grid_Offset: 0.3
+    - _Grid_Offset: 4.75
     - _Noise_Scale: 50
     - _Noise_Strength: 1
     - _Pixel_Size: 20
@@ -76,7 +76,7 @@ Material:
     - _ZWriteControl: 0
     m_Colors:
     - _Base_Color: {r: 0.16016674, g: 0, b: 1, a: 0}
-    - _Glow_Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Glow_Color: {r: 1, g: 0, b: 0.3784151, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &4526849820054045036
 MonoBehaviour:
