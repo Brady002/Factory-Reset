@@ -24,7 +24,6 @@ public class Infector : BaseEnemy
 
     private void LateUpdate()
     {
-        
         distanceToTarget = Vector3.Distance(transform.position, player.transform.position);
         targetPosition = player.transform.position;
 
@@ -32,6 +31,7 @@ public class Infector : BaseEnemy
 
         Quaternion targetRotation = Quaternion.LookRotation(directionToTarget, Vector3.up);
 
+        transform.rotation = Quaternion.Euler(targetRotation.eulerAngles);
         turretHead.transform.rotation = Quaternion.Euler(targetRotation.eulerAngles);
 
         if(!attacking)
@@ -45,7 +45,7 @@ public class Infector : BaseEnemy
     }
     public override void UpdateIdleState(float aggroRange, GameObject player)
     {
-        if(distanceToTarget < aggroRange)
+        if (distanceToTarget < aggroRange)
         {
             currentState = EnemyState.Chase;
         }
@@ -87,10 +87,19 @@ public class Infector : BaseEnemy
         {
             if(hit.collider.GetComponent<CharacterController>())
             {
-                agent.SetDestination(transform.position);
-                currentState = EnemyState.Attack;
+                if(distanceToTarget < buffer)
+                {
+                    Teleport();
+                } else
+                {
+                    agent.SetDestination(transform.position);
+                    Attack();
+                }
+                Debug.Log("In Sight");
+                
             } else
             {
+                Debug.Log("Searching");
                 agent.SetDestination(targetPosition);
             }
             
@@ -104,12 +113,12 @@ public class Infector : BaseEnemy
 
     public override void UpdateAttackState()
     {
-        
 
         if (!attacking)
         {
             if(Physics.Raycast(shootOrigin.position, shootOrigin.forward, out RaycastHit hit, attackRange, HitMask))
             {
+                Debug.Log("hit something");
                 if (hit.collider.GetComponent<CharacterController>())
                 {
                     StartCoroutine(Attack());
@@ -128,11 +137,27 @@ public class Infector : BaseEnemy
     {
         
         attacking = true;
+        
         GameObject bulletGO = Instantiate(projectile, shootOrigin);
         bulletGO.transform.parent = null;
         bulletGO.GetComponent<Hurtbox>().Attributes(attackDamage, false);
         bulletGO.GetComponent<Projectile>().Attributes(bulletSpeed, attackRange);
         yield return new WaitForSeconds(attackDelay);
         attacking = false;
+    }
+
+    private void Teleport()
+    {
+        Vector3 noY = new Vector3(1, 0, 1);
+        Vector3 randomDirection = Random.onUnitSphere * buffer;
+        randomDirection += transform.position;
+        NavMeshHit hit;
+        Vector3 finalPosition = Vector3.zero;
+        if (NavMesh.SamplePosition(randomDirection, out hit, buffer, 1))
+        {
+            finalPosition = hit.position;
+        }
+
+        rb.position = finalPosition;
     }
 }

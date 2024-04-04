@@ -6,6 +6,7 @@ public class ActivateInSequence : MonoBehaviour
 {
 
     public List<GameObject> ObjectsToActivate = new List<GameObject>();
+
     public float initialDelay;
     public float delay;
     private bool done = false;
