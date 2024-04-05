@@ -17,6 +17,7 @@ public class Floater : BaseEnemy
     private float distanceToTarget;
     private Vector3 targetPosition;
     public float buffer = 10f;
+    private bool canTeleport = true;
 
     [Header("Bullet Settings")]
     [SerializeField] private int attackDamage;
@@ -37,7 +38,6 @@ public class Floater : BaseEnemy
                 inSight = false;
             }
         }
-        Debug.Log(inSight);
         //Attack: Distance > 5 and target is in sight
         if (distanceToTarget > buffer && inSight) { Invoke(nameof(Attack), .5f); }
         if(distanceToTarget < buffer && inSight) { Teleport();  }
@@ -73,12 +73,14 @@ public class Floater : BaseEnemy
 
     private void Patrol()
     {
-        agent.SetDestination(targetPosition);
+        if(currentState != EnemyState.Dead) { agent.SetDestination(targetPosition); }
+        
     }
 
     private void Attack()
     {
-        agent.SetDestination(transform.position);
+        if (currentState != EnemyState.Dead) { agent.SetDestination(transform.position); }
+        
         Vector3 directionToTarget = targetPosition - transform.position;
         Quaternion targetRotation = Quaternion.LookRotation(directionToTarget, Vector3.up);
         turretHead.transform.rotation = targetRotation;
@@ -102,15 +104,28 @@ public class Floater : BaseEnemy
 
     private void Teleport()
     {
-        Vector3 randomDirection = Random.onUnitSphere * (buffer + 5);
-        randomDirection += transform.position;
-        NavMeshHit hit;
-        Vector3 finalPosition = Vector3.zero;
-        if (NavMesh.SamplePosition(randomDirection, out hit, buffer, 1))
+        if(canTeleport)
         {
-            finalPosition = hit.position;
-        }
+            canTeleport = false;
+            Vector3 randomDirection = Random.onUnitSphere * (buffer + 5);
+            randomDirection += transform.position;
+            NavMeshHit hit;
+            Vector3 finalPosition = Vector3.zero;
+            if (NavMesh.SamplePosition(randomDirection, out hit, buffer, 1))
+            {
+                finalPosition = hit.position;
+            }
 
-        rb.position = finalPosition;
+            rb.position = finalPosition;
+            if (currentState != EnemyState.Dead) { agent.SetDestination(transform.position); }
+
+            Invoke(nameof(ResetTeleport), 2f);
+        }
+        
+    }
+
+    private void ResetTeleport()
+    {
+        canTeleport = true;
     }
 }

@@ -11,6 +11,7 @@ public class Hurtbox : MonoBehaviour
     [SerializeField] private bool friendly = false;
     [SerializeField] private float damageGracePeriod = 1f;
     [SerializeField] private int damage = 1;
+    public string damageReason;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +44,7 @@ public class Hurtbox : MonoBehaviour
             if (other.GetComponent<CharacterController>())
             {
                 CharacterController player = other.GetComponent<CharacterController>();
-                player.TakeDamage(damage, damageGracePeriod);
+                player.TakeDamage(damage, damageGracePeriod, damageReason);
             }
         }
     }

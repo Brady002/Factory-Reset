@@ -99,7 +99,6 @@ public class Infector : BaseEnemy
                 
             } else
             {
-                Debug.Log("Searching");
                 agent.SetDestination(targetPosition);
             }
             

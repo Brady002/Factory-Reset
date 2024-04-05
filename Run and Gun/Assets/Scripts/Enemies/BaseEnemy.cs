@@ -16,7 +16,7 @@ public abstract class BaseEnemy : MonoBehaviour
     }
 
     public EnemyState currentState;
-
+    public string enemyName = "";
     public float maxHealth = 25f;
     public float currentHealth;
     public List<Collider> damageSources;
@@ -85,7 +85,6 @@ public abstract class BaseEnemy : MonoBehaviour
     public void TakeDamage(float Damage, Vector3 hitPosition)
     {
         float damageTaken = Mathf.Clamp(Damage, 0, currentHealth);
-        Debug.Log(damageSources.Count);
         if(damageSources.Count != 0)
         {
             StartCoroutine(ClearDamageArray());
@@ -102,7 +101,6 @@ public abstract class BaseEnemy : MonoBehaviour
     private IEnumerator ClearDamageArray()
     {
         yield return new WaitForSeconds(.5f);
-        Debug.Log("Removed Damage Source");
         damageSources.RemoveAt(0);
     }
 
@@ -110,6 +108,7 @@ public abstract class BaseEnemy : MonoBehaviour
     {
         currentState = EnemyState.Dead;
         FindObjectOfType<PointSystem>().AddPoints(deathPointValue);
+        FindObjectOfType<PointSystem>().AddTextToDisplay("+ Killed " + enemyName);
 
         rb.freezeRotation = false;
         Destroy(gameObject.GetComponent<NavMeshAgent>());

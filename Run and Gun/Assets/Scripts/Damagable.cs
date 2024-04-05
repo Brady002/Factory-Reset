@@ -12,7 +12,8 @@ public class Damagable : MonoBehaviour
     [SerializeField] private float bodyMultiplyer = 1f;
     [SerializeField] private float armMultiplyer = 0.7f;
 
-    [SerializeField] private int limbPointValue;
+    private int limbPointValue;
+    private string limbHit;
 
     public GameObject particles;
     private bool alreadyHit = false;
@@ -21,28 +22,38 @@ public class Damagable : MonoBehaviour
     {
         if(Controller.currentHealth > 0)
         {
-            if (!alreadyHit) //
-            {
-                Instantiate(particles, hitPosition, transform.rotation);
-                StartCoroutine(ShowParticles());
-                alreadyHit = true;
-            }
+            limbPointValue = 0;
 
             switch (bodyPart)
             {
                 case colliderType.head:
                     Controller.TakeDamage(WeaponDamage * headMultiplyer, hitPosition);
-                    FindObjectOfType<PointSystem>().AddPoints(100);
+                    limbPointValue = 100;
+                    limbHit = "Head";
                     break;
 
                 case colliderType.body:
                     Controller.TakeDamage(WeaponDamage * bodyMultiplyer, hitPosition);
-                    FindObjectOfType<PointSystem>().AddPoints(25);
+                    limbPointValue = 25;
+                    limbHit = "Body";
                     break;
                 case colliderType.arm:
                     Controller.TakeDamage(WeaponDamage * armMultiplyer, hitPosition);
-                    FindObjectOfType<PointSystem>().AddPoints(10);
+                    limbHit = "Limb";
                     break;
+            }
+
+            if (!alreadyHit) //
+            {
+                Instantiate(particles, hitPosition, transform.rotation);
+                StartCoroutine(ShowParticles());
+                alreadyHit = true;
+                if(limbPointValue > 0)
+                {
+                    FindObjectOfType<PointSystem>().AddPoints(limbPointValue);
+                    FindObjectOfType<PointSystem>().AddTextToDisplay("+ Hit " + limbHit);
+                }
+                
             }
         }
         

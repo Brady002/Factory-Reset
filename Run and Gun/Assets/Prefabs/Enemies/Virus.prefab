@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
+  enemyName: Virus
   maxHealth: 15
   currentHealth: 0
   damageSources: []
@@ -110,6 +111,7 @@ MonoBehaviour:
   attackRange: 2
   attackDelay: 0.9
   attacking: 0
+  deathPointValue: 50
   player: {fileID: 0}
   rb: {fileID: 4092194148756676749}
   mesh: {fileID: 8176359946099729307}
@@ -31305,3 +31307,4 @@ MonoBehaviour:
   friendly: 0
   damageGracePeriod: 1
   damage: 100
+  damageReason: Attacked

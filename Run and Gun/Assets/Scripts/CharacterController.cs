@@ -330,11 +330,12 @@ public class CharacterController : MonoBehaviour
         weapon.AddComponent<Hurtbox>().Attributes(30, true);
     }
 
-    public void TakeDamage(int _damage, float _gracePeriod)
+    public void TakeDamage(int _damage, float _gracePeriod, string _damageReason)
     {
         if(canTakeDamage) {
             canTakeDamage = false;
             FindAnyObjectByType<PointSystem>().SubtractPoints(_damage);
+            FindAnyObjectByType<PointSystem>().AddTextToDisplay("- " + _damageReason);
             StartCoroutine(ResetDamagePeriod(_gracePeriod));
         }
     }
