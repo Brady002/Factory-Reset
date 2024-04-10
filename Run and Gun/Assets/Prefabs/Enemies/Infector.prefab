@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
+  enemyName: Infector
   maxHealth: 30
   currentHealth: 0
   damageSources: []
@@ -17499,7 +17500,6 @@ MonoBehaviour:
   headMultiplyer: 1.5
   bodyMultiplyer: 1
   armMultiplyer: 0.5
-  limbPointValue: 0
   particles: {fileID: 9178375030027738852, guid: 9cba8ebb5fe70994296eaee5a4747498, type: 3}
 --- !u!1 &5272174108377725301
 GameObject:
@@ -17624,7 +17624,6 @@ MonoBehaviour:
   headMultiplyer: 1.5
   bodyMultiplyer: 1
   armMultiplyer: 0.5
-  limbPointValue: 0
   particles: {fileID: 9178375030027738852, guid: 9cba8ebb5fe70994296eaee5a4747498, type: 3}
 --- !u!1 &6996992851835423592
 GameObject:
@@ -17749,7 +17748,6 @@ MonoBehaviour:
   headMultiplyer: 1.5
   bodyMultiplyer: 1
   armMultiplyer: 0.5
-  limbPointValue: 0
   particles: {fileID: 9178375030027738852, guid: 9cba8ebb5fe70994296eaee5a4747498, type: 3}
 --- !u!1 &7216909080047606393
 GameObject:
@@ -17876,7 +17874,6 @@ MonoBehaviour:
   headMultiplyer: 1.5
   bodyMultiplyer: 1
   armMultiplyer: 0.7
-  limbPointValue: 0
   particles: {fileID: 9178375030027738852, guid: e0108afdbb880ca4c84eea1d513f4316, type: 3}
 --- !u!96 &3044817366551422714
 TrailRenderer:
@@ -18105,5 +18102,4 @@ MonoBehaviour:
   headMultiplyer: 1.5
   bodyMultiplyer: 1
   armMultiplyer: 0.5
-  limbPointValue: 0
   particles: {fileID: 9178375030027738852, guid: 9cba8ebb5fe70994296eaee5a4747498, type: 3}

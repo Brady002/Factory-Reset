@@ -65,6 +65,7 @@ MonoBehaviour:
   friendly: 0
   damageGracePeriod: 1
   damage: 1
+  damageReason: Shot
 --- !u!135 &4582334239901093439
 SphereCollider:
   m_ObjectHideFlags: 0

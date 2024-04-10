@@ -29,13 +29,13 @@ public class Damagable : MonoBehaviour
                 case colliderType.head:
                     Controller.TakeDamage(WeaponDamage * headMultiplyer, hitPosition);
                     limbPointValue = 100;
-                    limbHit = "Head";
+                    limbHit = "Headshot";
                     break;
 
                 case colliderType.body:
                     Controller.TakeDamage(WeaponDamage * bodyMultiplyer, hitPosition);
                     limbPointValue = 25;
-                    limbHit = "Body";
+                    limbHit = "Bodyshot";
                     break;
                 case colliderType.arm:
                     Controller.TakeDamage(WeaponDamage * armMultiplyer, hitPosition);
@@ -51,7 +51,7 @@ public class Damagable : MonoBehaviour
                 if(limbPointValue > 0)
                 {
                     FindObjectOfType<PointSystem>().AddPoints(limbPointValue);
-                    FindObjectOfType<PointSystem>().AddTextToDisplay("+ Hit " + limbHit);
+                    FindObjectOfType<PointSystem>().AddTextToDisplay("+ " + limbHit);
                 }
                 
             }

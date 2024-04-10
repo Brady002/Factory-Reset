@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
+  enemyName: Watcher
   maxHealth: 25
   currentHealth: 0
   damageSources: []
@@ -5063,7 +5064,6 @@ MonoBehaviour:
   headMultiplyer: 1.5
   bodyMultiplyer: 1
   armMultiplyer: 0.7
-  limbPointValue: 0
   particles: {fileID: 9178375030027738852, guid: e0108afdbb880ca4c84eea1d513f4316, type: 3}
 --- !u!1 &7698158977996367380
 GameObject:
@@ -5167,7 +5167,6 @@ MonoBehaviour:
   headMultiplyer: 1.5
   bodyMultiplyer: 1
   armMultiplyer: 0.7
-  limbPointValue: 0
   particles: {fileID: 9178375030027738852, guid: aa676591033f3f3449aef88115351e07, type: 3}
 --- !u!136 &2455706908911223377
 CapsuleCollider:
