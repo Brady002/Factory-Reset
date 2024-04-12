@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainTitle : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class MainTitle : MonoBehaviour
     public Dissolve blackScreen;
     private void Start()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
         cam = GetComponent<GameObject>();
         anim = GetComponent<Animator>();
     }
@@ -52,5 +55,15 @@ public class MainTitle : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void Level(string _level)
+    {
+        StartCoroutine(Begin(_level));
+    }
+    private IEnumerator Begin(string _levelName)
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(_levelName);
     }
 }

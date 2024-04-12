@@ -10515,6 +10515,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 949622505}
   - {fileID: 617049068}
   - {fileID: 1565941995}
   - {fileID: 1746950009}
@@ -10523,7 +10524,6 @@ Transform:
   - {fileID: 470119327}
   - {fileID: 311215579}
   - {fileID: 1056277058}
-  - {fileID: 949622505}
   - {fileID: 1385556499}
   - {fileID: 1567950887}
   - {fileID: 1203125756}
@@ -21182,16 +21182,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1896805591}
-        m_TargetAssemblyTypeName: SelectLevel, Assembly-CSharp
-        m_MethodName: LevelOne
-        m_Mode: 4
+      - m_Target: {fileID: 1896805589}
+        m_TargetAssemblyTypeName: MainTitle, Assembly-CSharp
+        m_MethodName: Level
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 1
-          m_StringArgument: 
+          m_StringArgument: Level One
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1567180760}
@@ -22318,16 +22318,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1896805591}
-        m_TargetAssemblyTypeName: SelectLevel, Assembly-CSharp
-        m_MethodName: LevelTwo
-        m_Mode: 4
+      - m_Target: {fileID: 1896805589}
+        m_TargetAssemblyTypeName: MainTitle, Assembly-CSharp
+        m_MethodName: Level
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 1
-          m_StringArgument: 
+          m_StringArgument: Level Two
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1664967777}
@@ -28033,7 +28033,6 @@ GameObject:
   - component: {fileID: 1896805588}
   - component: {fileID: 1896805589}
   - component: {fileID: 1896805590}
-  - component: {fileID: 1896805591}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -28195,18 +28194,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1896805591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1896805584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14b9cf22bbf6b064f9b4d5f96c56f416, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1939200110
 GameObject:
   m_ObjectHideFlags: 0

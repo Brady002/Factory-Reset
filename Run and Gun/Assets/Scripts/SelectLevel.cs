@@ -6,32 +6,17 @@ using UnityEngine.SceneManagement;
 public class SelectLevel : MonoBehaviour
 {
     private string level;
-    public void DevLevel(float waitTime)
-    {
-        level = "Dev Level";
-        StartCoroutine(LoadLevel(waitTime));
 
-    }
-    public void LevelOne(float waitTime)
+    public void Level(string _level)
     {
-        level = "Level One";
-        StartCoroutine(LoadLevel(waitTime));
+        level = _level;
+        LoadLevel();
     }
 
-    public void LevelTwo(float waitTime)
+    private void LoadLevel()
     {
-        level = "Level Two";
-        StartCoroutine(LoadLevel(waitTime));
-    }
-
-    private IEnumerator LoadLevel(float waitTime)
-    {
-        if(waitTime == null)
-        {
-            waitTime = 0;
-        }
-        yield return new WaitForSeconds(waitTime);
         SceneManager.LoadScene(level);
+        
     }
     
 }
