@@ -232,7 +232,7 @@ MonoBehaviour:
   dashKey: 0
   crouchKey: 306
   moveSpeed: 5
-  maxSpeed: 15
+  maxSpeed: 13
   orientation: {fileID: 3003057381647403163}
   playerHeight: 2
   Ground:

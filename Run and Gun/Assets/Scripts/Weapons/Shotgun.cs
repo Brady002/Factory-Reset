@@ -98,7 +98,7 @@ public class Shotgun : BaseWeapon
             }
             else if (Hit.collider.TryGetComponent<Target>(out Target target))
             {
-                target.onShot.Invoke();
+                target.Shot();
             }
 
         }

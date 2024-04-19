@@ -7,18 +7,57 @@ public class Target : MonoBehaviour
 {
     public bool activated = false;
     public UnityEvent onShot;
-
-    private void Update()
+    public UnityEvent onDeactivate;
+    public enum Mode
     {
-        if(activated)
+        Single,
+        Timed,
+        Toggle
+    }
+    public Mode mode;
+
+    [Header("Timed Variables")]
+    public float duration;
+
+    public void Shot()
+    {
+        switch (mode)
         {
-            activated = false;
-            onShot.Invoke();
+            case Mode.Single:
+                activated = true;
+                onShot.Invoke();
+                
+                break;
+            case Mode.Timed:
+                activated = true;
+                onShot.Invoke();
+                StartCoroutine(timer());
+                
+                break;
+            case Mode.Toggle:
+                if (!activated)
+                {
+                    activated = true;
+                    onShot.Invoke();
+                }
+                else
+                {
+                    activated = false;
+                    onDeactivate.Invoke();
+                }
+                break;
+
+
+
         }
     }
-    public void ActivateEvent()
+
+    private IEnumerator timer()
     {
-        print("Event");
+        yield return new WaitForSeconds(duration);
+        onDeactivate.Invoke();
+
+
     }
 
 }
