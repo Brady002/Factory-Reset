@@ -9,7 +9,7 @@ public class Sword : BaseWeapon
 {
     // Start is called before the first frame update
 
-    public Rigidbody rb;
+    private CharacterController pc;
     private float LastUse = 0;
     public LayerMask HitMask;
     private bool attacking = false;
@@ -21,9 +21,9 @@ public class Sword : BaseWeapon
     }
     public override void Fire(float damage, float range, float cooldown, Animator _hand)
     {
-        if(rb == null)
+        if (pc == null)
         {
-            rb = this.transform.parent.parent.parent.GetComponent<Rigidbody>();
+            pc = this.transform.parent.parent.parent.GetComponent<CharacterController>();
         }
 
         if (Time.time > cooldown + LastUse)
@@ -50,7 +50,7 @@ public class Sword : BaseWeapon
     {
         if(attacking)
         {
-            rb.velocity = rb.transform.forward * 30;
+            pc.rb.velocity = pc.rb.transform.forward * 30;
             if (Physics.SphereCast(origin.position, range, origin.forward, out RaycastHit collision, range, HitMask) && attacking)
             {
                 Collider[] enemies = Physics.OverlapSphere(collision.point, 2);

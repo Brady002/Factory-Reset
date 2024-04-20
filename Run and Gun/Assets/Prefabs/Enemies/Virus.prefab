@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4092194148756676749}
   - component: {fileID: 1513393272581961309}
   - component: {fileID: 7515894551296859235}
-  m_Layer: 2
+  m_Layer: 11
   m_Name: Virus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26283,7 +26283,6 @@ MonoBehaviour:
   headMultiplyer: 1.5
   bodyMultiplyer: 1
   armMultiplyer: 0.7
-  limbPointValue: 0
   particles: {fileID: 9178375030027738852, guid: aa676591033f3f3449aef88115351e07, type: 3}
 --- !u!1 &5981149963948621227
 GameObject:
@@ -26408,7 +26407,6 @@ MonoBehaviour:
   headMultiplyer: 1.5
   bodyMultiplyer: 1
   armMultiplyer: 0.7
-  limbPointValue: 0
   particles: {fileID: 9178375030027738852, guid: e0108afdbb880ca4c84eea1d513f4316, type: 3}
 --- !u!1 &7406037571553178553
 GameObject:
