@@ -18,7 +18,9 @@
 <h2>Weapons:</h2>
 <p>Each weapon provided in the game provides a unique experience when wielded, allowing for levels to be completed differently based on the weapons availible.</p>
 <ul>
-  <li><h3>Revolver:</h3> Single shot weapon with a middling fire-rate, no bullet spread, and high damage. (WIP) Shooting the terrain will cause bullets to richochet.</li>
-  <li><h3>Shotgun:</h3> Fires a spread of ten pellets that individually low damage. Medium spread and slow fire-rate. Able to destroy certain bits of terrain. (WIP) Firing the shotgun while airbourne will propel the player backwards.</li>
+  <li><h3>Revolver:</h3> Single shot weapon with a middling fire-rate, no bullet spread, and high damage.</li>
+  <li><h3>Shotgun:</h3> Fires a spread of ten pellets that individually low damage. Medium spread and slow fire-rate. Able to destroy certain bits of terrain. Firing the shotgun while airbourne will propel the player backwards.</li>
   <li><h3>Sword:</h3> Melee weapon with fast recharge. Using propels the player horizontally, dealing high damage to any enemies the player comes across during this state.</li>
+  <li><h3>SMG:</h3> A quick-firing weapon with high recoil and low damage.</li>
+  <li><h3>Grenade Launcher:<h3/> Fires an arching projectile that deal high damage in a large area. Very slow rate of fire.</li>
 </ul>
