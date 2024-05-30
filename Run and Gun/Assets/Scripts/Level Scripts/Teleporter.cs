@@ -6,11 +6,21 @@ using static UnityEngine.EventSystems.EventTrigger;
 public class Teleporter : MonoBehaviour
 {
     [SerializeField] private GameObject teleportPosition;
+    public bool playerOnly = true;
     public float delay = 0f;
 
     private void OnTriggerEnter(Collider other)
     {
-        other.transform.position = teleportPosition.transform.position;
+        if(playerOnly)
+        {
+            if(other.GetComponent<CharacterController>()) {
+                other.transform.position = teleportPosition.transform.position;
+            }
+        } else
+        {
+            other.transform.position = teleportPosition.transform.position;
+        }
+        
     }
 
     public void StartTeleport(GameObject entity)

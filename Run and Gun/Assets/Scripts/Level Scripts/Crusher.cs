@@ -22,6 +22,11 @@ public class Crusher : MonoBehaviour
         }
     }
 
+    public void StartMachine()
+    {
+        Invoke(nameof(Initiate), offset);
+    }
+
     private void Initiate()
     {
         StartCoroutine(RunMachine());
@@ -36,7 +41,7 @@ public class Crusher : MonoBehaviour
         StartCoroutine(RunMachine());
     }
 
-    private void StopMachine()
+    public void StopMachine()
     {
         StopCoroutine(RunMachine());
         anim.SetTrigger("Retract");

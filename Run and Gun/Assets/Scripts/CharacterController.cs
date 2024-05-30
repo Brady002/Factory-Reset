@@ -112,6 +112,11 @@ public class CharacterController : MonoBehaviour
             rb.useGravity = true;
         }
 
+        //Move();
+    }
+
+    private void FixedUpdate()
+    {
         Move();
     }
 
@@ -190,7 +195,7 @@ public class CharacterController : MonoBehaviour
         if (grounded == true)
         {
             //rb.AddForce(moveDirection.normalized * moveSpeed * 5f, ForceMode.Force);
-            rb.velocity += (moveDirection.normalized * moveSpeed * 0.1f);
+            rb.velocity += (moveDirection.normalized * moveSpeed);
             //rb.velocity = CollideandSlide(rb.velocity, rb.transform.position, 0, false, rb.velocity);
             //rb.velocity += CollideandSlide(Vector3.down * 9.81f, transform.position + rb.velocity, 0, true, Vector3.down * 9.81f);
             
@@ -200,7 +205,7 @@ public class CharacterController : MonoBehaviour
         if (grounded == false)
         {
             //rb.AddForce(moveDirection.normalized * moveSpeed * 5f * airMultiplier, ForceMode.Force);
-            rb.velocity += (moveDirection.normalized * moveSpeed * 0.1f * airMultiplier);
+            rb.velocity += (moveDirection.normalized * moveSpeed * airMultiplier);
         }
 
         if (OnSlope()) //Normalize the movement direction on a slope.

@@ -1073,6 +1073,7 @@ GameObject:
   - component: {fileID: 5544715242395296379}
   - component: {fileID: 6585690777979760914}
   - component: {fileID: 2924638247561705529}
+  - component: {fileID: 5379010663082605926}
   m_Layer: 0
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -1146,6 +1147,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleportPosition: {fileID: 0}
   delay: 0
+--- !u!114 &5379010663082605926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8185829939205491922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b01599b076ee73149ae32c5b526b3656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  friendly: 1
+  damageGracePeriod: 2
+  damage: 500
+  damageReason: 
 --- !u!1 &8241801464120957977
 GameObject:
   m_ObjectHideFlags: 0
@@ -1215,5 +1232,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   automatic: 1
-  speed: 1
+  extendTime: 1
+  retractTime: 1
   offset: 0
