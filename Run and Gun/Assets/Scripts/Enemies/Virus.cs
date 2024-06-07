@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,10 +9,29 @@ public class Virus : BaseEnemy
     public float movementSpeed;
     public GameObject attackPoint;
 
-    //private bool attacking = false;
+    private float distanceToTarget;
+    private Vector3 targetPosition;
 
+    private void Update()
+    {
+        if(distanceToTarget > attackRange && distanceToTarget > aggroRange)
+        {
+            Idle();
+        } else if (distanceToTarget > attackRange && distanceToTarget < aggroRange)
+        {
+            Chase();
+        } else if (distanceToTarget < attackRange)
+        {
+            StartCoroutine(Attack());
+        }
+    }
+    private void LateUpdate()
+    {
+        distanceToTarget = Vector3.Distance(transform.position, player.transform.position);
+        targetPosition = player.transform.position;
 
-    public override void UpdateIdleState(float aggroRange, GameObject player)
+    }
+    private void Idle()
     {
         Vector3 directionToTarget = player.transform.position - transform.position;
         if(directionToTarget.magnitude < aggroRange)
@@ -24,40 +42,17 @@ public class Virus : BaseEnemy
 
         rb.rotation = Quaternion.Euler(0f, targetRotation.eulerAngles.y, 0f);
     }
-
-    public override void UpdatePatrolState()
+    private void Chase()
     {
-        throw new System.NotImplementedException();
+        if (currentState != EnemyState.Dead) { agent.SetDestination(targetPosition); }
+        Vector3 offset = (player.transform.position - transform.position).normalized * (attackRange - .2f); //Prevents enemy from trying to clip into target. Recommended to set around attack range.
+        if (currentState != EnemyState.Dead) { agent.SetDestination(targetPosition - offset); }
     }
 
-    public override void UpdateChaseState(float attackRange, GameObject player)
-    {
-        Vector3 targetPosition = player.transform.position;
-        Vector3 offset = (player.transform.position - transform.position).normalized * attackRange; //Prevents enemy from trying to clip into target. Recommended to set around attack range.
-        agent.SetDestination(targetPosition - offset);
-        if((player.transform.position - transform.position).magnitude < attackRange)
-        {
-            currentState = EnemyState.Attack;
-        }
-    }
-
-    public override void UpdateAttackState()
-    {
-        if ((player.transform.position - transform.position).magnitude < attackRange)
-        {
-            if(!attacking)
-            {
-                StartCoroutine(Attack());
-            }
-            
-        } else
-        {
-            currentState = EnemyState.Chase;
-        }
-    }
 
     private IEnumerator Attack()
     {
+        //if (currentState != EnemyState.Dead) { agent.SetDestination(targetPosition); }
         attacking = true;
         attackPoint.SetActive(true);
         yield return new WaitForSeconds(attackDelay);

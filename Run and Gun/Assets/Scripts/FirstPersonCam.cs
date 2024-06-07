@@ -5,8 +5,8 @@ using UnityEngine;
 public class FirstPersonCam : MonoBehaviour
 {
 
-    public float sensitivityX = 1000;
-    public float sensitivityY = 1000;
+    public float sensitivityX = 800;
+    public float sensitivityY = 800;
     private float mouseX;
     private float mouseY;
     private float xRotation;

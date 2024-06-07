@@ -49,39 +49,6 @@ public abstract class BaseEnemy : MonoBehaviour
         player = GameObject.Find("Player");
     }
 
-    private void Update()
-    {
-        if(enableAI)
-        {
-            switch (currentState)
-            {
-                case EnemyState.Idle:
-                    UpdateIdleState(aggroRange, player);
-                    break;
-                case EnemyState.Patrol:
-                    UpdatePatrolState();
-                    break;
-                case EnemyState.Chase:
-                    UpdateChaseState(attackRange, player);
-                    break;
-                case EnemyState.Attack:
-                    UpdateAttackState();
-                    break;
-                case EnemyState.Dead:
-                    break;
-            }
-        }
-        
-    }
-
-    public abstract void UpdateIdleState(float aggroRange, GameObject player);
-
-    public abstract void UpdatePatrolState();
-
-    public abstract void UpdateChaseState(float attackRange, GameObject player);
-
-    public abstract void UpdateAttackState();
-
     public void TakeDamage(float Damage, Vector3 hitPosition)
     {
         float damageTaken = Mathf.Clamp(Damage, 0, currentHealth);

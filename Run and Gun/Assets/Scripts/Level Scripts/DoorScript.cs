@@ -12,13 +12,6 @@ public class DoorScript : MonoBehaviour
     {
         animator = GetComponent<Animator>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<CharacterController>())
@@ -50,5 +43,10 @@ public class DoorScript : MonoBehaviour
     public void Close()
     {
         animator.SetBool("open", false);
+    }
+
+    public void Lock(bool _locked)
+    {
+        locked = _locked;
     }
 }

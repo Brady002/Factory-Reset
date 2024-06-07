@@ -50,26 +50,6 @@ public class Floater : BaseEnemy
         targetPosition = player.transform.position;
 
     }
-    public override void UpdateIdleState(float aggroRange, GameObject player)
-    {
-
-    }
-
-    public override void UpdatePatrolState()
-    {
-
-    }
-
-    public override void UpdateChaseState(float attackRange, GameObject player)
-    {
-        
-        
-    }
-
-    public override void UpdateAttackState()
-    {
-        
-    }
 
     private void Patrol()
     {
