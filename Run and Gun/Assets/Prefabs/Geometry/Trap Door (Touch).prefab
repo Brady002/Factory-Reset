@@ -369,7 +369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   appearPosition: 2
   dissapearPosition: -1
-  effectSpeed: 5
+  effectSpeed: 3
   touchActivated: 1
   oneTime: 0
   initialDelay: 0

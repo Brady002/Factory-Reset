@@ -21,40 +21,45 @@ public class Target : MonoBehaviour
 
     public void Shot()
     {
-        switch (mode)
+        if(!activated)
         {
-            case Mode.Single:
-                activated = true;
-                onShot.Invoke();
-                
-                break;
-            case Mode.Timed:
-                activated = true;
-                onShot.Invoke();
-                StartCoroutine(timer());
-                
-                break;
-            case Mode.Toggle:
-                if (!activated)
-                {
+            switch (mode)
+            {
+                case Mode.Single:
                     activated = true;
                     onShot.Invoke();
-                }
-                else
-                {
-                    activated = false;
-                    onDeactivate.Invoke();
-                }
-                break;
+
+                    break;
+                case Mode.Timed:
+                    activated = true;
+                    onShot.Invoke();
+                    StartCoroutine(timer());
+
+                    break;
+                case Mode.Toggle:
+                    if (!activated)
+                    {
+                        activated = true;
+                        onShot.Invoke();
+                    }
+                    else
+                    {
+                        activated = false;
+                        onDeactivate.Invoke();
+                    }
+                    break;
 
 
 
+            }
         }
+        
     }
 
     private IEnumerator timer()
     {
         yield return new WaitForSeconds(duration);
+        activated = false;
         onDeactivate.Invoke();
 
 
