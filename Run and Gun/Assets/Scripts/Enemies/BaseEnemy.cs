@@ -49,6 +49,22 @@ public abstract class BaseEnemy : MonoBehaviour
         player = GameObject.Find("Player");
     }
 
+    private void Update()
+    {
+        rb.useGravity = !OnSlope();
+    }
+
+
+    private bool OnSlope() //Checks to see if enemy is on slope.
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit slopeHit, 2f * 0.5f + 0.3f))
+        {
+            float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
+            return angle < 45 && angle != 0;
+        }
+
+        return false;
+    }
     public void TakeDamage(float Damage, Vector3 hitPosition)
     {
         float damageTaken = Mathf.Clamp(Damage, 0, currentHealth);

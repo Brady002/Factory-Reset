@@ -21,29 +21,35 @@ public class Target : MonoBehaviour
 
     public void Shot()
     {
-        if(!activated)
-        {
             switch (mode)
             {
                 case Mode.Single:
-                    activated = true;
-                    onShot.Invoke();
+                    if(!activated)
+                    {
+                        activated = true;
+                        onShot.Invoke();
+                    }
+                    
 
                     break;
                 case Mode.Timed:
-                    activated = true;
-                    onShot.Invoke();
-                    StartCoroutine(timer());
-
+                    if(!activated)
+                    {
+                        activated = true;
+                        onShot.Invoke();
+                        StartCoroutine(timer());
+                    }
                     break;
                 case Mode.Toggle:
                     if (!activated)
                     {
+                        Debug.Log("shot");
                         activated = true;
                         onShot.Invoke();
                     }
                     else
                     {
+                        Debug.Log("Unshot");
                         activated = false;
                         onDeactivate.Invoke();
                     }
@@ -52,7 +58,6 @@ public class Target : MonoBehaviour
 
 
             }
-        }
         
     }
 
