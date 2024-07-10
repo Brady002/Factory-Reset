@@ -10,12 +10,12 @@ Material:
   m_Name: Black Tile Medium
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 2100000, guid: 1a9c7fdfc54ec274dabcdc3681237855, type: 2}
-  m_ModifiedSerializedProperties: 0
+  m_ModifiedSerializedProperties: 2
   m_ValidKeywords:
   - _EMISSION
   - _NORMALMAP
   m_InvalidKeywords: []
-  m_LightmapFlags: 4
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -28,11 +28,11 @@ Material:
     m_TexEnvs:
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: 20a41f68eac12dd44a2ee79a4e1b2d63, type: 3}
-        m_Scale: {x: 0.25, y: 1}
+        m_Scale: {x: 0, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 20a41f68eac12dd44a2ee79a4e1b2d63, type: 3}
-        m_Scale: {x: 0.25, y: 1}
+        m_Scale: {x: 0, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats: []

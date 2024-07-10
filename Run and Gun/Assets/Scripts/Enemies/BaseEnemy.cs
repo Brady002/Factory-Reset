@@ -16,6 +16,7 @@ public abstract class BaseEnemy : MonoBehaviour
     }
 
     public EnemyState currentState;
+    public LayerMask Ground;
     public string enemyName = "";
     public float maxHealth = 25f;
     public float currentHealth;
@@ -39,6 +40,8 @@ public abstract class BaseEnemy : MonoBehaviour
     {
         currentHealth = maxHealth;
         StartCoroutine(Materialize());
+        player = GameObject.Find("Player");
+
     }
 
     private void Start()
@@ -49,22 +52,7 @@ public abstract class BaseEnemy : MonoBehaviour
         player = GameObject.Find("Player");
     }
 
-    private void Update()
-    {
-        rb.useGravity = !OnSlope();
-    }
-
-
-    private bool OnSlope() //Checks to see if enemy is on slope.
-    {
-        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit slopeHit, 2f * 0.5f + 0.3f))
-        {
-            float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
-            return angle < 45 && angle != 0;
-        }
-
-        return false;
-    }
+    
     public void TakeDamage(float Damage, Vector3 hitPosition)
     {
         float damageTaken = Mathf.Clamp(Damage, 0, currentHealth);
@@ -93,9 +81,15 @@ public abstract class BaseEnemy : MonoBehaviour
         FindObjectOfType<PointSystem>().AddPoints(deathPointValue);
         FindObjectOfType<PointSystem>().AddTextToDisplay("+ Killed " + enemyName);
 
+        rb.useGravity = true;
         rb.freezeRotation = false;
-        Destroy(gameObject.GetComponent<NavMeshAgent>());
-
+        
+        if(gameObject.GetComponent<NavMeshAgent>())
+        {
+            Destroy(gameObject.GetComponent<AgentLinkMover>());
+            Destroy(gameObject.GetComponent<NavMeshAgent>());
+        }
+        
         rb.AddTorque(-hitPosition, ForceMode.Impulse);
         rb.AddForceAtPosition(-rb.transform.forward, hitPosition, ForceMode.Impulse);
         yield return new WaitForSeconds(1f);

@@ -101,6 +101,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
+  Ground:
+    serializedVersion: 2
+    m_Bits: 1792
   enemyName: Watcher
   maxHealth: 25
   currentHealth: 0

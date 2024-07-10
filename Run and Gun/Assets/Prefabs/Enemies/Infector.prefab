@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 6396313307617869569}
   - component: {fileID: 5048415508860508690}
   - component: {fileID: 5808076320360295611}
-  m_Layer: 7
+  - component: {fileID: 2956349799854162631}
+  m_Layer: 11
   m_Name: Infector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,12 +60,12 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
-  m_Height: 2
+  m_Radius: 1
+  m_Height: 3
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!54 &6396313307617869569
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -127,6 +128,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
+  Ground:
+    serializedVersion: 2
+    m_Bits: 0
   enemyName: Infector
   maxHealth: 30
   currentHealth: 0
@@ -149,6 +153,25 @@ MonoBehaviour:
   buffer: 10
   attackDamage: 50
   bulletSpeed: 10
+--- !u!114 &2956349799854162631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700207786351137578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3633e8c9320404bab70d3dcea05597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Method: 0
+  m_Curve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1752012510215045295
 GameObject:
   m_ObjectHideFlags: 0

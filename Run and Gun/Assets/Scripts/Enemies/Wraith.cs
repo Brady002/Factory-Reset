@@ -7,10 +7,14 @@ public class Wraith : BaseEnemy
 {
     private void Update()
     {
-        Vector3 directionToTarget = player.transform.position - transform.position;
+        if(currentState != EnemyState.Dead)
+        {
+            Vector3 directionToTarget = player.transform.position - transform.position;
 
-        Quaternion targetRotation = Quaternion.LookRotation(directionToTarget, Vector3.up);
-        rb.rotation = Quaternion.Euler(0f, targetRotation.eulerAngles.y, 0f);
+            Quaternion targetRotation = Quaternion.LookRotation(directionToTarget, Vector3.up);
+            rb.rotation = Quaternion.Euler(0f, targetRotation.eulerAngles.y, 0f);
+        }
+        
     }
     
 }

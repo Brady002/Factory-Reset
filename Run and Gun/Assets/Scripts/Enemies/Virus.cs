@@ -24,6 +24,26 @@ public class Virus : BaseEnemy
         {
             StartCoroutine(Attack());
         }
+
+        if (currentState != EnemyState.Dead)
+        {
+            if (!Physics.Raycast(transform.position, Vector3.down, 2f * 0.5f + 0.2f, Ground)) //Used to turn on physics
+            {
+                rb.useGravity = true;
+                StartCoroutine(EnableAgent(false));
+            }
+            else
+            {
+                rb.useGravity = false;
+                StartCoroutine(EnableAgent(true));
+            }
+        }
+    }
+
+    private IEnumerator EnableAgent(bool _enable)
+    {
+        yield return new WaitForSeconds(.1f);
+        agent.enabled = _enable;
     }
     private void LateUpdate()
     {
