@@ -28,7 +28,7 @@ public class Sword : BaseWeapon
 
         if (Time.time > cooldown + LastUse)
         {
-            _hand.SetFloat("ShootSpeed", 1 / (cooldown - 1));
+            _hand.SetFloat("ShootSpeed", .5f / (cooldown - 1f));
             _hand.SetTrigger("Fire");
             LastUse = Time.time;
             attacking = true;

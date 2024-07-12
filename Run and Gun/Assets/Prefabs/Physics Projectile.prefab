@@ -70,6 +70,7 @@ MonoBehaviour:
   friendly: 1
   damageGracePeriod: 0
   damage: 50
+  damageReason: 
 --- !u!54 &2710527400749199320
 Rigidbody:
   m_ObjectHideFlags: 0
