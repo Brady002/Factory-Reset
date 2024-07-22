@@ -237,7 +237,7 @@ MonoBehaviour:
   playerHeight: 2
   Ground:
     serializedVersion: 2
-    m_Bits: 1843
+    m_Bits: 1827
   groundDrag: 5
   grounded: 0
   jumpForce: 22

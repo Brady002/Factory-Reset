@@ -5,8 +5,8 @@ using UnityEngine;
 public class TrapDoor : MonoBehaviour
 {
     [Header("General Settings")]
-    public float appearPosition;
-    public float dissapearPosition;
+    public float topPosition;
+    public float bottomPosition;
     public float effectSpeed = 5.0f;
 
     [Header("Touch Settings")]
@@ -41,8 +41,8 @@ public class TrapDoor : MonoBehaviour
             box.enabled = true;
         }
         
-        float currentPos = appearPosition;
-        while (currentPos >= dissapearPosition)
+        float currentPos = topPosition;
+        while (currentPos >= bottomPosition)
         {
             currentPos -= Time.deltaTime * speed;
 
@@ -53,8 +53,8 @@ public class TrapDoor : MonoBehaviour
 
     private IEnumerator Dematerialize(float speed)
     {
-        float currentPos = dissapearPosition;
-        while (currentPos <= appearPosition)
+        float currentPos = bottomPosition;
+        while (currentPos <= topPosition)
         {
             currentPos += Time.deltaTime * speed;
 

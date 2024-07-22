@@ -56,6 +56,6 @@ Material:
     - _Size: 0.5
     - _Speed: 2
     m_Colors:
-    - _Color: {r: 1, g: 0.6761494, b: 0, a: 0}
+    - _Color: {r: 0, g: 0.045345783, b: 1, a: 0}
     - _Glow_Color: {r: 0, g: 0.005592346, b: 1, a: 0}
   m_BuildTextureStacks: []

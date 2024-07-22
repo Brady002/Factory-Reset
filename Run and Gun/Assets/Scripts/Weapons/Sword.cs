@@ -42,7 +42,7 @@ public class Sword : BaseWeapon
 
     private IEnumerator Attacking()
     {
-        yield return new WaitForSeconds(attackTime);
+        yield return new WaitForSeconds(attackTime + .1f);
         attacking = false;
     }
 

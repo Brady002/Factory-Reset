@@ -367,8 +367,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7595523431c8e16489770b3f4dae8b8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  appearPosition: 2
-  dissapearPosition: -1
+  topPosition: 2
+  bottomPosition: -1
   effectSpeed: 5
   touchActivated: 0
   oneTime: 0
