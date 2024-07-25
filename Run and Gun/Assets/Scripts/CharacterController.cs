@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
@@ -12,7 +13,7 @@ public class CharacterController : MonoBehaviour
     public KeyCode crouchKey = KeyCode.LeftControl;
 
     public float moveSpeed;
-    public float maxSpeed = 10f;
+    public float maxSpeed = 12f;
     private float normalMaxSpeed;
     public Transform orientation;
     public float playerHeight;
@@ -32,6 +33,16 @@ public class CharacterController : MonoBehaviour
     [SerializeField] public float maxHealth;
     [SerializeField] private float currentHealth;
     private bool canTakeDamage = true;
+
+    public enum Status
+    {
+        None,
+        Slow,
+        Quicken,
+    }
+
+    private Status statusEffect;
+    private float statusStrength;
 
     [Header("Crouching")]
     public float crouchSpeed = 3f;
@@ -86,7 +97,7 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, Ground))
+        if (!Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.1f, Ground))
         { //Checks to see if player is on ground
             StartCoroutine(CoyoteFrames());
         }
@@ -111,8 +122,6 @@ public class CharacterController : MonoBehaviour
             rb.drag = 1;
             rb.useGravity = true;
         }
-
-        //Move();
     }
 
     private void FixedUpdate()
@@ -167,24 +176,35 @@ public class CharacterController : MonoBehaviour
 
     private void StateHandler() //Dictates speed variables. Mess with these if you want to change values.
     {
+        if(statusEffect == Status.Slow)
+        {
+            maxSpeed = (statusStrength / 100) * normalMaxSpeed;
+        } else if (statusEffect == Status.Quicken)
+        {
+            maxSpeed = ((statusStrength / 100) * normalMaxSpeed) + normalMaxSpeed;
+        } else if (statusEffect == Status.None)
+        {
+            maxSpeed = normalMaxSpeed;
+        }
 
         //Grounded and Air
 
         if (grounded && !sliding)
         {
             state = PlayerState.onGround;
-            maxSpeed = normalMaxSpeed;
+            
         }
 
         else if (!grounded)
         {
             state = PlayerState.inAir;
-            maxSpeed = normalMaxSpeed;
         }
 
         else if (grounded && sliding)
         {
             maxSpeed = normalMaxSpeed * 1.5f;
+
+            
         }
 
     }
@@ -365,4 +385,32 @@ public class CharacterController : MonoBehaviour
         }
     }
 
+    public void ActivateStatus(int _status, float _strength, float _duration)
+    {
+        StartCoroutine(ApplyStatusEffect(_status, _strength, _duration));
+    }
+    private IEnumerator ApplyStatusEffect(int _status, float _strength, float _duration)
+    {
+        Debug.Log("Status: " + _status + "Strength: " + _strength + "Duration: " + _duration);
+        statusStrength = _strength;
+        DetermineStatus(_status);
+        yield return new WaitForSeconds(_duration);
+        statusEffect = Status.None;
+        Debug.Log("End");
+    }
+
+    public Status DetermineStatus(int _status)
+    {
+        switch(_status)
+        {
+            case (int)Status.Slow:
+                statusEffect = Status.Slow;
+                break;
+            case (int)Status.Quicken:
+                statusEffect = Status.Quicken;
+                break;
+            default: break;
+        }
+        return statusEffect;
+    }
 }
