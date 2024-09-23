@@ -32,7 +32,7 @@ public class CharacterController : MonoBehaviour
     [Header("Health")]
     [SerializeField] public float maxHealth;
     [SerializeField] private float currentHealth;
-    private bool canTakeDamage = true;
+    public bool canTakeDamage = true;
 
     public enum Status
     {
@@ -387,16 +387,17 @@ public class CharacterController : MonoBehaviour
 
     public void ActivateStatus(int _status, float _strength, float _duration)
     {
+        StopCoroutine(ApplyStatusEffect(_status, _strength, _duration));
         StartCoroutine(ApplyStatusEffect(_status, _strength, _duration));
     }
     private IEnumerator ApplyStatusEffect(int _status, float _strength, float _duration)
     {
-        Debug.Log("Status: " + _status + "Strength: " + _strength + "Duration: " + _duration);
+        //Debug.Log("Status: " + _status + "Strength: " + _strength + "Duration: " + _duration);
+
         statusStrength = _strength;
         DetermineStatus(_status);
         yield return new WaitForSeconds(_duration);
         statusEffect = Status.None;
-        Debug.Log("End");
     }
 
     public Status DetermineStatus(int _status)

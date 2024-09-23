@@ -117,13 +117,13 @@ MonoBehaviour:
   damageSources: []
   aggroRange: 50
   attackRange: 4
-  attackDelay: 0.9
+  attackDelay: 1.5
   attacking: 0
   deathPointValue: 10
   player: {fileID: 0}
   rb: {fileID: 6248462908825684795}
   mesh: {fileID: 7995271607237521711}
-  agent: {fileID: 0}
+  agent: {fileID: 8020123545189916520}
   meleePoint: {fileID: 7790036023823403670}
 --- !u!195 &8020123545189916520
 NavMeshAgent:
@@ -26651,7 +26651,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   friendly: 0
   damageGracePeriod: 1
-  damage: 50
+  damage: 10
   damageReason: Bitten
 --- !u!1 &8510965421826093410
 GameObject:

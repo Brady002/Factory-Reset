@@ -70,7 +70,7 @@ Material:
     - _BlendModePreserveSpecular: 1
     - _CastShadows: 1
     - _Cull: 0
-    - _Cutoff: -1
+    - _Cutoff: -122.8
     - _DstBlend: 0
     - _Glow_Thickness: 0.05
     - _Grid_Offset: 0.3

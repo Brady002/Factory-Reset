@@ -10,7 +10,7 @@ Material:
   m_Name: Black_Tile
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 2100000, guid: cf93d5d9a4d835e47b6ee649c3c93a9f, type: 2}
-  m_ModifiedSerializedProperties: 0
+  m_ModifiedSerializedProperties: 16
   m_ValidKeywords:
   - _EMISSION
   - _NORMALMAP
@@ -18,7 +18,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2050
   stringTagMap:
     RenderType: Opaque
   disabledShaderPasses: []
@@ -35,7 +35,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _QueueOffset: 50
     m_Colors: []
   m_BuildTextureStacks: []
 --- !u!114 &3986115657849928510

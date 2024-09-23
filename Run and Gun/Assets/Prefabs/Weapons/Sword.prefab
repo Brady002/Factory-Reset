@@ -6914,7 +6914,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 50
-  range: 1
+  range: 2
   cooldown: 2
   canDestroy: 0
   origin: {fileID: 3385199652987384630}

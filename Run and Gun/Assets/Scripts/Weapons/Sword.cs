@@ -42,15 +42,18 @@ public class Sword : BaseWeapon
 
     private IEnumerator Attacking()
     {
+        pc.canTakeDamage = false;
         yield return new WaitForSeconds(attackTime + .1f);
         attacking = false;
+        yield return new WaitForSeconds(.1f);
+        pc.canTakeDamage = true;
     }
 
     private void Update()
     {
         if(attacking)
         {
-            pc.rb.velocity = pc.rb.transform.forward * 30;
+            pc.rb.velocity = pc.rb.transform.forward * (pc.maxSpeed * 3 - 6f);
             if (Physics.SphereCast(origin.position, range, origin.forward, out RaycastHit collision, range, HitMask) && attacking)
             {
                 Collider[] enemies = Physics.OverlapSphere(collision.point, 2);
